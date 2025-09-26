@@ -1,0 +1,81 @@
+/* Auto-generated file. Do not edit manually. */
+
+#ifndef EMBEDDED_PP_STM32G061_CRC_HPP
+#define EMBEDDED_PP_STM32G061_CRC_HPP
+
+#include <cstdint>
+#include "Core/Common.hpp"
+#include "Core/BitField.hpp"
+#include "Core/Register.hpp"
+
+/** @brief Cyclic redundancy check calculation unit */
+namespace STM32G061::CRC {
+
+    /** @brief Data register */
+    using CRC_DR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x0, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Data register bits */
+    using CRC_DR_DR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Independent data register */
+    using CRC_IDR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x4, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief General-purpose 32-bit data register bits */
+    using CRC_IDR_IDR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Control register */
+    using CRC_CR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x8, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Reverse output data This bit controls the reversal of the bit order of the output data. */
+    using CRC_CR_REV_OUT = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 7, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Bit order not affected (value: 0)
+     *          - B_0x1: Bit-reversed output format (value: 1)
+     */
+        /** @brief Bit order not affected */
+    constexpr std::uint32_t CRC_CR_REV_OUT_B_0x0 = 0;
+        /** @brief Bit-reversed output format */
+    constexpr std::uint32_t CRC_CR_REV_OUT_B_0x1 = 1;
+
+    /** @brief Reverse input data These bits control the reversal of the bit order of the input data */
+    using CRC_CR_REV_IN = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 5, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Bit order not affected (value: 0)
+     *          - B_0x1: Bit reversal done by byte (value: 1)
+     *          - B_0x2: Bit reversal done by half-word (value: 2)
+     *          - B_0x3: Bit reversal done by word (value: 3)
+     */
+        /** @brief Bit order not affected */
+    constexpr std::uint32_t CRC_CR_REV_IN_B_0x0 = 0;
+        /** @brief Bit reversal done by byte */
+    constexpr std::uint32_t CRC_CR_REV_IN_B_0x1 = 1;
+        /** @brief Bit reversal done by half-word */
+    constexpr std::uint32_t CRC_CR_REV_IN_B_0x2 = 2;
+        /** @brief Bit reversal done by word */
+    constexpr std::uint32_t CRC_CR_REV_IN_B_0x3 = 3;
+
+    /** @brief Polynomial size These bits control the size of the polynomial. */
+    using CRC_CR_POLYSIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: 32 bit polynomial (value: 0)
+     *          - B_0x1: 16 bit polynomial (value: 1)
+     *          - B_0x2: 8 bit polynomial (value: 2)
+     *          - B_0x3: 7 bit polynomial (value: 3)
+     */
+        /** @brief 32 bit polynomial */
+    constexpr std::uint32_t CRC_CR_POLYSIZE_B_0x0 = 0;
+        /** @brief 16 bit polynomial */
+    constexpr std::uint32_t CRC_CR_POLYSIZE_B_0x1 = 1;
+        /** @brief 8 bit polynomial */
+    constexpr std::uint32_t CRC_CR_POLYSIZE_B_0x2 = 2;
+        /** @brief 7 bit polynomial */
+    constexpr std::uint32_t CRC_CR_POLYSIZE_B_0x3 = 3;
+
+    /** @brief RESET bit */
+    using CRC_CR_RESET = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Initial CRC value */
+    using CRC_INIT = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x10, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Programmable initial CRC value */
+    using CRC_INIT_CRC_INIT = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief polynomial */
+    using CRC_POL = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x14, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Programmable polynomial */
+    using CRC_POL_POL = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+}
+
+#endif

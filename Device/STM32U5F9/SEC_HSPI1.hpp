@@ -1,0 +1,1110 @@
+/* Auto-generated file. Do not edit manually. */
+
+#ifndef EMBEDDED_PP_STM32U5F9_SEC_HSPI1_HPP
+#define EMBEDDED_PP_STM32U5F9_SEC_HSPI1_HPP
+
+#include <cstdint>
+#include "Core/Common.hpp"
+#include "Core/BitField.hpp"
+#include "Core/Register.hpp"
+
+/** @brief HSPI1 */
+namespace STM32U5F9::SEC_HSPI1 {
+
+    /** @brief HSPI control register */
+    using HSPI_CR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x0, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Enable */
+    using HSPI_CR_EN = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: HSPI disabled (value: 0)
+     *          - B_0x1: HSPI enabled (value: 1)
+     */
+        /** @brief HSPI disabled */
+    constexpr std::uint32_t HSPI_CR_EN_B_0x0 = 0;
+        /** @brief HSPI enabled */
+    constexpr std::uint32_t HSPI_CR_EN_B_0x1 = 1;
+
+    /** @brief Abort request */
+    using HSPI_CR_ABORT = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No abort requested (value: 0)
+     *          - B_0x1: Abort requested (value: 1)
+     */
+        /** @brief No abort requested */
+    constexpr std::uint32_t HSPI_CR_ABORT_B_0x0 = 0;
+        /** @brief Abort requested */
+    constexpr std::uint32_t HSPI_CR_ABORT_B_0x1 = 1;
+
+    /** @brief DMA enable */
+    using HSPI_CR_DMAEN = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 2, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DMA disabled for Indirect mode (value: 0)
+     *          - B_0x1: DMA enabled for Indirect mode (value: 1)
+     */
+        /** @brief DMA disabled for Indirect mode */
+    constexpr std::uint32_t HSPI_CR_DMAEN_B_0x0 = 0;
+        /** @brief DMA enabled for Indirect mode */
+    constexpr std::uint32_t HSPI_CR_DMAEN_B_0x1 = 1;
+
+    /** @brief Timeout counter enable */
+    using HSPI_CR_TCEN = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Timeout counter is disabled, and thus the chip-select (nCS) remains active indefinitely after an access in Memory-mapped mode. (value: 0)
+     *          - B_0x1: Timeout counter is enabled, and thus the chip-select is released in the Memory-mapped mode after TIMEOUT[15:0] cycles of external device inactivity. (value: 1)
+     */
+        /** @brief Timeout counter is disabled, and thus the chip-select (nCS) remains active indefinitely after an access in Memory-mapped mode. */
+    constexpr std::uint32_t HSPI_CR_TCEN_B_0x0 = 0;
+        /** @brief Timeout counter is enabled, and thus the chip-select is released in the Memory-mapped mode after TIMEOUT[15:0] cycles of external device inactivity. */
+    constexpr std::uint32_t HSPI_CR_TCEN_B_0x1 = 1;
+
+    /** @brief Dual-memory mode */
+    using HSPI_CR_DMM = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 6, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Dual-quad mode disabled (value: 0)
+     *          - B_0x1: Dual-quad mode enabled (value: 1)
+     */
+        /** @brief Dual-quad mode disabled */
+    constexpr std::uint32_t HSPI_CR_DMM_B_0x0 = 0;
+        /** @brief Dual-quad mode enabled */
+    constexpr std::uint32_t HSPI_CR_DMM_B_0x1 = 1;
+
+    /** @brief Memory select */
+    using HSPI_CR_FSEL = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 7, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief FIFO threshold level */
+    using HSPI_CR_FTHRES = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 8, 6, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: FTF is set if there are one or more free bytes available to be written to in the FIFO in Indirect-write mode, or if there are one or more valid bytes can be read from the FIFO in Indirect-read mode. (value: 0)
+     *          - B_0x1: FTF is set if there are two or more free bytes available to be written to in the FIFO in Indirect-write mode, or if there are two or more valid bytes can be read from the FIFO in Indirect-read mode. (value: 1)
+     *          - B_0x3F: FTF is set if there are 64 free bytes available to be written to in the FIFO in Indirect-write mode, or if there are 64 valid bytes can be read from the FIFO in Indirect-read mode. (value: 63)
+     */
+        /** @brief FTF is set if there are one or more free bytes available to be written to in the FIFO in Indirect-write mode, or if there are one or more valid bytes can be read from the FIFO in Indirect-read mode. */
+    constexpr std::uint32_t HSPI_CR_FTHRES_B_0x0 = 0;
+        /** @brief FTF is set if there are two or more free bytes available to be written to in the FIFO in Indirect-write mode, or if there are two or more valid bytes can be read from the FIFO in Indirect-read mode. */
+    constexpr std::uint32_t HSPI_CR_FTHRES_B_0x1 = 1;
+        /** @brief FTF is set if there are 64 free bytes available to be written to in the FIFO in Indirect-write mode, or if there are 64 valid bytes can be read from the FIFO in Indirect-read mode. */
+    constexpr std::uint32_t HSPI_CR_FTHRES_B_0x3F = 63;
+
+    /** @brief Transfer error interrupt enable */
+    using HSPI_CR_TEIE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Interrupt disabled (value: 0)
+     *          - B_0x1: Interrupt enabled (value: 1)
+     */
+        /** @brief Interrupt disabled */
+    constexpr std::uint32_t HSPI_CR_TEIE_B_0x0 = 0;
+        /** @brief Interrupt enabled */
+    constexpr std::uint32_t HSPI_CR_TEIE_B_0x1 = 1;
+
+    /** @brief Transfer complete interrupt enable */
+    using HSPI_CR_TCIE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 17, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Interrupt disabled (value: 0)
+     *          - B_0x1: Interrupt enabled (value: 1)
+     */
+        /** @brief Interrupt disabled */
+    constexpr std::uint32_t HSPI_CR_TCIE_B_0x0 = 0;
+        /** @brief Interrupt enabled */
+    constexpr std::uint32_t HSPI_CR_TCIE_B_0x1 = 1;
+
+    /** @brief FIFO threshold interrupt enable */
+    using HSPI_CR_FTIE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 18, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Interrupt disabled (value: 0)
+     *          - B_0x1: Interrupt enabled (value: 1)
+     */
+        /** @brief Interrupt disabled */
+    constexpr std::uint32_t HSPI_CR_FTIE_B_0x0 = 0;
+        /** @brief Interrupt enabled */
+    constexpr std::uint32_t HSPI_CR_FTIE_B_0x1 = 1;
+
+    /** @brief Status match interrupt enable */
+    using HSPI_CR_SMIE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 19, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Interrupt disabled (value: 0)
+     *          - B_0x1: Interrupt enabled (value: 1)
+     */
+        /** @brief Interrupt disabled */
+    constexpr std::uint32_t HSPI_CR_SMIE_B_0x0 = 0;
+        /** @brief Interrupt enabled */
+    constexpr std::uint32_t HSPI_CR_SMIE_B_0x1 = 1;
+
+    /** @brief Timeout interrupt enable */
+    using HSPI_CR_TOIE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 20, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Interrupt disabled (value: 0)
+     *          - B_0x1: Interrupt enabled (value: 1)
+     */
+        /** @brief Interrupt disabled */
+    constexpr std::uint32_t HSPI_CR_TOIE_B_0x0 = 0;
+        /** @brief Interrupt enabled */
+    constexpr std::uint32_t HSPI_CR_TOIE_B_0x1 = 1;
+
+    /** @brief Automatic-polling mode stop */
+    using HSPI_CR_APMS = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 22, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Automatic-polling mode is stopped only by abort or by disabling the HSPI. (value: 0)
+     *          - B_0x1: Automatic-polling mode stops as soon as there is a match. (value: 1)
+     */
+        /** @brief Automatic-polling mode is stopped only by abort or by disabling the HSPI. */
+    constexpr std::uint32_t HSPI_CR_APMS_B_0x0 = 0;
+        /** @brief Automatic-polling mode stops as soon as there is a match. */
+    constexpr std::uint32_t HSPI_CR_APMS_B_0x1 = 1;
+
+    /** @brief Polling match mode */
+    using HSPI_CR_PMM = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 23, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: AND-match mode, SMF is set if all the unmasked bits received from the device match the corresponding bits in the match register. (value: 0)
+     *          - B_0x1: OR-match mode, SMF is set if any of the unmasked bits received from the device matches its corresponding bit in the match register. (value: 1)
+     */
+        /** @brief AND-match mode, SMF is set if all the unmasked bits received from the device match the corresponding bits in the match register. */
+    constexpr std::uint32_t HSPI_CR_PMM_B_0x0 = 0;
+        /** @brief OR-match mode, SMF is set if any of the unmasked bits received from the device matches its corresponding bit in the match register. */
+    constexpr std::uint32_t HSPI_CR_PMM_B_0x1 = 1;
+
+    /** @brief Functional mode */
+    using HSPI_CR_FMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 28, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Indirect-write mode (value: 0)
+     *          - B_0x1: Indirect-read mode (value: 1)
+     *          - B_0x2: Automatic-polling mode (value: 2)
+     *          - B_0x3: Memory-mapped mode (value: 3)
+     */
+        /** @brief Indirect-write mode */
+    constexpr std::uint32_t HSPI_CR_FMODE_B_0x0 = 0;
+        /** @brief Indirect-read mode */
+    constexpr std::uint32_t HSPI_CR_FMODE_B_0x1 = 1;
+        /** @brief Automatic-polling mode */
+    constexpr std::uint32_t HSPI_CR_FMODE_B_0x2 = 2;
+        /** @brief Memory-mapped mode */
+    constexpr std::uint32_t HSPI_CR_FMODE_B_0x3 = 3;
+
+    /** @brief Flash select */
+    using HSPI_CR_MSEL = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 30, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: data exchanged over IO[3:0] (value: 0)
+     *          - B_0x1: data exchanged over IO[7:4] (value: 1)
+     *          - B_0x2: data exchanged over IO11:8] (value: 2)
+     *          - B_0x3: data exchanged over IO[15:12] (value: 3)
+     */
+        /** @brief data exchanged over IO[3:0] */
+    constexpr std::uint32_t HSPI_CR_MSEL_B_0x0 = 0;
+        /** @brief data exchanged over IO[7:4] */
+    constexpr std::uint32_t HSPI_CR_MSEL_B_0x1 = 1;
+        /** @brief data exchanged over IO11:8] */
+    constexpr std::uint32_t HSPI_CR_MSEL_B_0x2 = 2;
+        /** @brief data exchanged over IO[15:12] */
+    constexpr std::uint32_t HSPI_CR_MSEL_B_0x3 = 3;
+
+    /** @brief HSPI device configuration register 1 */
+    using HSPI_DCR1 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x8, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Mode 0/Mode 3 */
+    using HSPI_DCR1_CKMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: CLK must stay low while nCS is high (chip-select released). This is referred to as Mode 0. (value: 0)
+     *          - B_0x1: CLK must stay high while nCS is high (chip-select released). This is referred to as Mode 3. (value: 1)
+     */
+        /** @brief CLK must stay low while nCS is high (chip-select released). This is referred to as Mode 0. */
+    constexpr std::uint32_t HSPI_DCR1_CKMODE_B_0x0 = 0;
+        /** @brief CLK must stay high while nCS is high (chip-select released). This is referred to as Mode 3. */
+    constexpr std::uint32_t HSPI_DCR1_CKMODE_B_0x1 = 1;
+
+    /** @brief Free running clock */
+    using HSPI_DCR1_FRCK = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: CLK is not free running. (value: 0)
+     *          - B_0x1: CLK is free running (always provided). (value: 1)
+     */
+        /** @brief CLK is not free running. */
+    constexpr std::uint32_t HSPI_DCR1_FRCK_B_0x0 = 0;
+        /** @brief CLK is free running (always provided). */
+    constexpr std::uint32_t HSPI_DCR1_FRCK_B_0x1 = 1;
+
+    /** @brief Delay block bypass */
+    using HSPI_DCR1_DLYBYP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: The internal sampling clock (called feedback clock) or the DQS data strobe external signal is delayed by the delay block (for more details on this block, refer to the dedicated section of the reference manual as it is not part of the HSPI). (value: 0)
+     *          - B_0x1: The delay block is bypassed, so the internal sampling clock or the DQS data strobe external signal is not affected by the delay block. The delay is shorter than when the delay block is not bypassed, even with the delay value set to minimum value in delay block. (value: 1)
+     */
+        /** @brief The internal sampling clock (called feedback clock) or the DQS data strobe external signal is delayed by the delay block (for more details on this block, refer to the dedicated section of the reference manual as it is not part of the HSPI). */
+    constexpr std::uint32_t HSPI_DCR1_DLYBYP_B_0x0 = 0;
+        /** @brief The delay block is bypassed, so the internal sampling clock or the DQS data strobe external signal is not affected by the delay block. The delay is shorter than when the delay block is not bypassed, even with the delay value set to minimum value in delay block. */
+    constexpr std::uint32_t HSPI_DCR1_DLYBYP_B_0x1 = 1;
+
+    /** @brief Chip-select high time */
+    using HSPI_DCR1_CSHT = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 8, 6, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: nCS stays high for at least 1 cycle between external device commands. (value: 0)
+     *          - B_0x1: nCS stays high for at least 2 cycles between external device commands. (value: 1)
+     */
+        /** @brief nCS stays high for at least 1 cycle between external device commands. */
+    constexpr std::uint32_t HSPI_DCR1_CSHT_B_0x0 = 0;
+        /** @brief nCS stays high for at least 2 cycles between external device commands. */
+    constexpr std::uint32_t HSPI_DCR1_CSHT_B_0x1 = 1;
+
+    /** @brief Device size */
+    using HSPI_DCR1_DEVSIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 5, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Memory type */
+    using HSPI_DCR1_MTYP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 24, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Micron mode, D0/D1 ordering in DTR 8-data-bit mode. Regular SPI protocol in Octal-, Quad-, Dual- and Single-SPI modes (value: 0)
+     *          - B_0x1: Macronix mode, D1/D0 ordering in DTR 8-data-bit mode. Regular SPI protocol in Octal-, Quad-, Dual-, and Single-SPI modes (value: 1)
+     *          - B_0x2: Standard mode (value: 2)
+     *          - B_0x3: Macronix RAM mode, D1/D0 ordering in DTR 8-data-bit mode. Regular SPI protocol in Octal-, Quad-, Dual-, and Single-SPI with dedicated address mapping. (value: 3)
+     *          - B_0x4: HyperBus memory mode, the protocol follows the HyperBus specification. 8-data-bit DTR mode must be selected. (value: 4)
+     *          - B_0x5: HyperBus register mode, addressing register space. The memory-mapped accesses in this mode must be non-cacheable, or Indirect read/write modes must be used. (value: 5)
+     */
+        /** @brief Micron mode, D0/D1 ordering in DTR 8-data-bit mode. Regular SPI protocol in Octal-, Quad-, Dual- and Single-SPI modes */
+    constexpr std::uint32_t HSPI_DCR1_MTYP_B_0x0 = 0;
+        /** @brief Macronix mode, D1/D0 ordering in DTR 8-data-bit mode. Regular SPI protocol in Octal-, Quad-, Dual-, and Single-SPI modes */
+    constexpr std::uint32_t HSPI_DCR1_MTYP_B_0x1 = 1;
+        /** @brief Standard mode */
+    constexpr std::uint32_t HSPI_DCR1_MTYP_B_0x2 = 2;
+        /** @brief Macronix RAM mode, D1/D0 ordering in DTR 8-data-bit mode. Regular SPI protocol in Octal-, Quad-, Dual-, and Single-SPI with dedicated address mapping. */
+    constexpr std::uint32_t HSPI_DCR1_MTYP_B_0x3 = 3;
+        /** @brief HyperBus memory mode, the protocol follows the HyperBus specification. 8-data-bit DTR mode must be selected. */
+    constexpr std::uint32_t HSPI_DCR1_MTYP_B_0x4 = 4;
+        /** @brief HyperBus register mode, addressing register space. The memory-mapped accesses in this mode must be non-cacheable, or Indirect read/write modes must be used. */
+    constexpr std::uint32_t HSPI_DCR1_MTYP_B_0x5 = 5;
+
+    /** @brief HSPI device configuration register 2 */
+    using HSPI_DCR2 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0xC, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Clock prescaler */
+    using HSPI_DCR2_PRESCALER = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 8, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: FCLK = FKERNEL, kernel clock used directly as HSPICLK (prescaler bypassed). In this case, if the DDR mode is used, it is mandatory to provide to the HSPI a kernel clock that has 50% duty-cycle. (value: 0)
+     *          - B_0x1: FCLK = FKERNEL/2 (value: 1)
+     */
+        /** @brief FCLK = FKERNEL, kernel clock used directly as HSPICLK (prescaler bypassed). In this case, if the DDR mode is used, it is mandatory to provide to the HSPI a kernel clock that has 50% duty-cycle. */
+    constexpr std::uint32_t HSPI_DCR2_PRESCALER_B_0x0 = 0;
+        /** @brief FCLK = FKERNEL/2 */
+    constexpr std::uint32_t HSPI_DCR2_PRESCALER_B_0x1 = 1;
+
+    /** @brief Wrap size */
+    using HSPI_DCR2_WRAPSIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Wrapped reads are not supported by the memory. (value: 0)
+     *          - B_0x2: External memory supports wrap size of 16 bytes. (value: 2)
+     *          - B_0x3: External memory supports wrap size of 32 bytes. (value: 3)
+     *          - B_0x4: External memory supports wrap size of 64 bytes. (value: 4)
+     *          - B_0x5: External memory supports wrap size of 128 bytes. (value: 5)
+     */
+        /** @brief Wrapped reads are not supported by the memory. */
+    constexpr std::uint32_t HSPI_DCR2_WRAPSIZE_B_0x0 = 0;
+        /** @brief External memory supports wrap size of 16 bytes. */
+    constexpr std::uint32_t HSPI_DCR2_WRAPSIZE_B_0x2 = 2;
+        /** @brief External memory supports wrap size of 32 bytes. */
+    constexpr std::uint32_t HSPI_DCR2_WRAPSIZE_B_0x3 = 3;
+        /** @brief External memory supports wrap size of 64 bytes. */
+    constexpr std::uint32_t HSPI_DCR2_WRAPSIZE_B_0x4 = 4;
+        /** @brief External memory supports wrap size of 128 bytes. */
+    constexpr std::uint32_t HSPI_DCR2_WRAPSIZE_B_0x5 = 5;
+
+    /** @brief HSPI device configuration register 3 */
+    using HSPI_DCR3 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x10, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Maximum transfer */
+    using HSPI_DCR3_MAXTRAN = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 8, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Maximum communication disabled (value: 0)
+     */
+        /** @brief Maximum communication disabled */
+    constexpr std::uint32_t HSPI_DCR3_MAXTRAN_B_0x0 = 0;
+
+    /** @brief CS boundary */
+    using HSPI_DCR3_CSBOUND = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 5, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: CS boundary disabled (value: 0)
+     */
+        /** @brief CS boundary disabled */
+    constexpr std::uint32_t HSPI_DCR3_CSBOUND_B_0x0 = 0;
+
+    /** @brief HSPI device configuration register 4 */
+    using HSPI_DCR4 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x14, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Refresh rate */
+    using HSPI_DCR4_REFRESH = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Refresh disabled (value: 0)
+     */
+        /** @brief Refresh disabled */
+    constexpr std::uint32_t HSPI_DCR4_REFRESH_B_0x0 = 0;
+
+    /** @brief HSPI_SR register */
+    using HSPI_SR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x20, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Transfer error flag */
+    using HSPI_SR_TEF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Transfer complete flag */
+    using HSPI_SR_TCF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief FIFO threshold flag */
+    using HSPI_SR_FTF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 2, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Status match flag */
+    using HSPI_SR_SMF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Timeout flag */
+    using HSPI_SR_TOF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 4, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Busy */
+    using HSPI_SR_BUSY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 5, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief FIFO level */
+    using HSPI_SR_FLEVEL = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 8, 7, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI_FCR register */
+    using HSPI_FCR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x24, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Clear transfer error flag */
+    using HSPI_FCR_CTEF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Clear transfer complete flag */
+    using HSPI_FCR_CTCF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Clear status match flag */
+    using HSPI_FCR_CSMF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Clear timeout flag */
+    using HSPI_FCR_CTOF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 4, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI data length register */
+    using HSPI_DLR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x40, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [31: 0]: Data length */
+    using HSPI_DLR_DL = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI_AR register */
+    using HSPI_AR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x48, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Address */
+    using HSPI_AR_ADDRESS = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI_DR register */
+    using HSPI_DR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x50, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [31: 0]: Data */
+    using HSPI_DR_DATA = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI polling status mask register */
+    using HSPI_PSMKR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x80, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Status mask */
+    using HSPI_PSMKR_MASK = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Bit n of the data received in Automatic-polling mode is masked and its value is not considered in the matching logic. (value: 0)
+     *          - B_0x1: Bit n of the data received in Automatic-polling mode is unmasked and its value is considered in the matching logic. (value: 1)
+     */
+        /** @brief Bit n of the data received in Automatic-polling mode is masked and its value is not considered in the matching logic. */
+    constexpr std::uint32_t HSPI_PSMKR_MASK_B_0x0 = 0;
+        /** @brief Bit n of the data received in Automatic-polling mode is unmasked and its value is considered in the matching logic. */
+    constexpr std::uint32_t HSPI_PSMKR_MASK_B_0x1 = 1;
+
+    /** @brief HSPI polling status match register */
+    using HSPI_PSMAR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x88, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [31: 0]: Status match */
+    using HSPI_PSMAR_MATCH = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI polling interval register */
+    using HSPI_PIR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x90, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [15: 0]: Polling interval */
+    using HSPI_PIR_INTERVAL = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 16, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI communication configuration register */
+    using HSPI_CCR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x100, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Instruction mode */
+    using HSPI_CCR_IMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No instruction (value: 0)
+     *          - B_0x1: Instruction on a single line (value: 1)
+     *          - B_0x2: Instruction on two lines (value: 2)
+     *          - B_0x3: Instruction on four lines (value: 3)
+     *          - B_0x4: Instruction on eight lines (value: 4)
+     */
+        /** @brief No instruction */
+    constexpr std::uint32_t HSPI_CCR_IMODE_B_0x0 = 0;
+        /** @brief Instruction on a single line */
+    constexpr std::uint32_t HSPI_CCR_IMODE_B_0x1 = 1;
+        /** @brief Instruction on two lines */
+    constexpr std::uint32_t HSPI_CCR_IMODE_B_0x2 = 2;
+        /** @brief Instruction on four lines */
+    constexpr std::uint32_t HSPI_CCR_IMODE_B_0x3 = 3;
+        /** @brief Instruction on eight lines */
+    constexpr std::uint32_t HSPI_CCR_IMODE_B_0x4 = 4;
+
+    /** @brief Instruction double transfer rate */
+    using HSPI_CCR_IDTR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DTR mode disabled for instruction phase (value: 0)
+     *          - B_0x1: DTR mode enabled for instruction phase (value: 1)
+     */
+        /** @brief DTR mode disabled for instruction phase */
+    constexpr std::uint32_t HSPI_CCR_IDTR_B_0x0 = 0;
+        /** @brief DTR mode enabled for instruction phase */
+    constexpr std::uint32_t HSPI_CCR_IDTR_B_0x1 = 1;
+
+    /** @brief Instruction size */
+    using HSPI_CCR_ISIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 4, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: 8-bit instruction (value: 0)
+     *          - B_0x1: 16-bit instruction (value: 1)
+     *          - B_0x2: 24-bit instruction (value: 2)
+     *          - B_0x3: 32-bit instruction (value: 3)
+     */
+        /** @brief 8-bit instruction */
+    constexpr std::uint32_t HSPI_CCR_ISIZE_B_0x0 = 0;
+        /** @brief 16-bit instruction */
+    constexpr std::uint32_t HSPI_CCR_ISIZE_B_0x1 = 1;
+        /** @brief 24-bit instruction */
+    constexpr std::uint32_t HSPI_CCR_ISIZE_B_0x2 = 2;
+        /** @brief 32-bit instruction */
+    constexpr std::uint32_t HSPI_CCR_ISIZE_B_0x3 = 3;
+
+    /** @brief Address mode */
+    using HSPI_CCR_ADMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 8, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No address (value: 0)
+     *          - B_0x1: Address on a single line (value: 1)
+     *          - B_0x2: Address on two lines (value: 2)
+     *          - B_0x3: Address on four lines (value: 3)
+     *          - B_0x4: Address on eight lines (value: 4)
+     */
+        /** @brief No address */
+    constexpr std::uint32_t HSPI_CCR_ADMODE_B_0x0 = 0;
+        /** @brief Address on a single line */
+    constexpr std::uint32_t HSPI_CCR_ADMODE_B_0x1 = 1;
+        /** @brief Address on two lines */
+    constexpr std::uint32_t HSPI_CCR_ADMODE_B_0x2 = 2;
+        /** @brief Address on four lines */
+    constexpr std::uint32_t HSPI_CCR_ADMODE_B_0x3 = 3;
+        /** @brief Address on eight lines */
+    constexpr std::uint32_t HSPI_CCR_ADMODE_B_0x4 = 4;
+
+    /** @brief Address double transfer rate */
+    using HSPI_CCR_ADDTR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 11, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DTR mode disabled for address phase (value: 0)
+     *          - B_0x1: DTR mode enabled for address phase (value: 1)
+     */
+        /** @brief DTR mode disabled for address phase */
+    constexpr std::uint32_t HSPI_CCR_ADDTR_B_0x0 = 0;
+        /** @brief DTR mode enabled for address phase */
+    constexpr std::uint32_t HSPI_CCR_ADDTR_B_0x1 = 1;
+
+    /** @brief Address size */
+    using HSPI_CCR_ADSIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 12, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: 8-bit address (value: 0)
+     *          - B_0x1: 16-bit address (value: 1)
+     *          - B_0x2: 24-bit address (value: 2)
+     *          - B_0x3: 32-bit address (value: 3)
+     */
+        /** @brief 8-bit address */
+    constexpr std::uint32_t HSPI_CCR_ADSIZE_B_0x0 = 0;
+        /** @brief 16-bit address */
+    constexpr std::uint32_t HSPI_CCR_ADSIZE_B_0x1 = 1;
+        /** @brief 24-bit address */
+    constexpr std::uint32_t HSPI_CCR_ADSIZE_B_0x2 = 2;
+        /** @brief 32-bit address */
+    constexpr std::uint32_t HSPI_CCR_ADSIZE_B_0x3 = 3;
+
+    /** @brief Alternate-byte mode */
+    using HSPI_CCR_ABMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No alternate bytes (value: 0)
+     *          - B_0x1: Alternate bytes on a single line (value: 1)
+     *          - B_0x2: Alternate bytes on two lines (value: 2)
+     *          - B_0x3: Alternate bytes on four lines (value: 3)
+     */
+        /** @brief No alternate bytes */
+    constexpr std::uint32_t HSPI_CCR_ABMODE_B_0x0 = 0;
+        /** @brief Alternate bytes on a single line */
+    constexpr std::uint32_t HSPI_CCR_ABMODE_B_0x1 = 1;
+        /** @brief Alternate bytes on two lines */
+    constexpr std::uint32_t HSPI_CCR_ABMODE_B_0x2 = 2;
+        /** @brief Alternate bytes on four lines */
+    constexpr std::uint32_t HSPI_CCR_ABMODE_B_0x3 = 3;
+
+    /** @brief Alternate bytes double transfer rate */
+    using HSPI_CCR_ABDTR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 19, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DTR mode disabled for alternate bytes phase (value: 0)
+     *          - B_0x1: DTR mode enabled for alternate bytes phase (value: 1)
+     */
+        /** @brief DTR mode disabled for alternate bytes phase */
+    constexpr std::uint32_t HSPI_CCR_ABDTR_B_0x0 = 0;
+        /** @brief DTR mode enabled for alternate bytes phase */
+    constexpr std::uint32_t HSPI_CCR_ABDTR_B_0x1 = 1;
+
+    /** @brief Alternate bytes size */
+    using HSPI_CCR_ABSIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 20, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: 8-bit alternate bytes (value: 0)
+     *          - B_0x1: 16-bit alternate bytes (value: 1)
+     *          - B_0x2: 24-bit alternate bytes (value: 2)
+     *          - B_0x3: 32-bit alternate bytes (value: 3)
+     */
+        /** @brief 8-bit alternate bytes */
+    constexpr std::uint32_t HSPI_CCR_ABSIZE_B_0x0 = 0;
+        /** @brief 16-bit alternate bytes */
+    constexpr std::uint32_t HSPI_CCR_ABSIZE_B_0x1 = 1;
+        /** @brief 24-bit alternate bytes */
+    constexpr std::uint32_t HSPI_CCR_ABSIZE_B_0x2 = 2;
+        /** @brief 32-bit alternate bytes */
+    constexpr std::uint32_t HSPI_CCR_ABSIZE_B_0x3 = 3;
+
+    /** @brief Data mode */
+    using HSPI_CCR_DMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 24, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No data (value: 0)
+     *          - B_0x1: Data on a single line (value: 1)
+     *          - B_0x2: Data on two lines (value: 2)
+     *          - B_0x3: Data on four lines (value: 3)
+     *          - B_0x4: Data on eight lines (value: 4)
+     *          - B_0x5: data on 16 lines (value: 5)
+     */
+        /** @brief No data */
+    constexpr std::uint32_t HSPI_CCR_DMODE_B_0x0 = 0;
+        /** @brief Data on a single line */
+    constexpr std::uint32_t HSPI_CCR_DMODE_B_0x1 = 1;
+        /** @brief Data on two lines */
+    constexpr std::uint32_t HSPI_CCR_DMODE_B_0x2 = 2;
+        /** @brief Data on four lines */
+    constexpr std::uint32_t HSPI_CCR_DMODE_B_0x3 = 3;
+        /** @brief Data on eight lines */
+    constexpr std::uint32_t HSPI_CCR_DMODE_B_0x4 = 4;
+        /** @brief data on 16 lines */
+    constexpr std::uint32_t HSPI_CCR_DMODE_B_0x5 = 5;
+
+    /** @brief Data double transfer rate */
+    using HSPI_CCR_DDTR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 27, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DTR mode disabled for data phase (value: 0)
+     *          - B_0x1: DTR mode enabled for data phase (value: 1)
+     */
+        /** @brief DTR mode disabled for data phase */
+    constexpr std::uint32_t HSPI_CCR_DDTR_B_0x0 = 0;
+        /** @brief DTR mode enabled for data phase */
+    constexpr std::uint32_t HSPI_CCR_DDTR_B_0x1 = 1;
+
+    /** @brief DQS enable */
+    using HSPI_CCR_DQSE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 29, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DQS disabled (value: 0)
+     *          - B_0x1: DQS enabled (value: 1)
+     */
+        /** @brief DQS disabled */
+    constexpr std::uint32_t HSPI_CCR_DQSE_B_0x0 = 0;
+        /** @brief DQS enabled */
+    constexpr std::uint32_t HSPI_CCR_DQSE_B_0x1 = 1;
+
+    /** @brief Send instruction only once mode */
+    using HSPI_CCR_SIOO = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 31, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Send instruction on every transaction (value: 0)
+     *          - B_0x1: Send instruction only for the first command (value: 1)
+     */
+        /** @brief Send instruction on every transaction */
+    constexpr std::uint32_t HSPI_CCR_SIOO_B_0x0 = 0;
+        /** @brief Send instruction only for the first command */
+    constexpr std::uint32_t HSPI_CCR_SIOO_B_0x1 = 1;
+
+    /** @brief HSPI timing configuration register */
+    using HSPI_TCR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x108, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Number of dummy cycles */
+    using HSPI_TCR_DCYC = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 5, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Delay hold quarter cycle */
+    using HSPI_TCR_DHQC = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 28, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No delay hold (value: 0)
+     *          - B_0x1: 1/4 cycle hold (value: 1)
+     */
+        /** @brief No delay hold */
+    constexpr std::uint32_t HSPI_TCR_DHQC_B_0x0 = 0;
+        /** @brief 1/4 cycle hold */
+    constexpr std::uint32_t HSPI_TCR_DHQC_B_0x1 = 1;
+
+    /** @brief Sample shift */
+    using HSPI_TCR_SSHIFT = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 30, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No shift (value: 0)
+     *          - B_0x1: 1/2 cycle shift (value: 1)
+     */
+        /** @brief No shift */
+    constexpr std::uint32_t HSPI_TCR_SSHIFT_B_0x0 = 0;
+        /** @brief 1/2 cycle shift */
+    constexpr std::uint32_t HSPI_TCR_SSHIFT_B_0x1 = 1;
+
+    /** @brief HSPI instruction register */
+    using HSPI_IR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x110, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Instruction */
+    using HSPI_IR_INSTRUCTION = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI alternate bytes register */
+    using HSPI_ABR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x120, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [31: 0]: Alternate bytes */
+    using HSPI_ABR_ALTERNATE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI low-power timeout register */
+    using HSPI_LPTR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x130, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [15: 0]: Timeout period */
+    using HSPI_LPTR_TIMEOUT = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 16, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI wrap communication configuration register */
+    using HSPI_WPCCR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x140, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Instruction mode */
+    using HSPI_WPCCR_IMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No instruction (value: 0)
+     *          - B_0x1: Instruction on a single line (value: 1)
+     *          - B_0x2: Instruction on two lines (value: 2)
+     *          - B_0x3: Instruction on four lines (value: 3)
+     *          - B_0x4: Instruction on eight lines (value: 4)
+     */
+        /** @brief No instruction */
+    constexpr std::uint32_t HSPI_WPCCR_IMODE_B_0x0 = 0;
+        /** @brief Instruction on a single line */
+    constexpr std::uint32_t HSPI_WPCCR_IMODE_B_0x1 = 1;
+        /** @brief Instruction on two lines */
+    constexpr std::uint32_t HSPI_WPCCR_IMODE_B_0x2 = 2;
+        /** @brief Instruction on four lines */
+    constexpr std::uint32_t HSPI_WPCCR_IMODE_B_0x3 = 3;
+        /** @brief Instruction on eight lines */
+    constexpr std::uint32_t HSPI_WPCCR_IMODE_B_0x4 = 4;
+
+    /** @brief Instruction double transfer rate */
+    using HSPI_WPCCR_IDTR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DTR mode disabled for instruction phase (value: 0)
+     *          - B_0x1: DTR mode enabled for instruction phase (value: 1)
+     */
+        /** @brief DTR mode disabled for instruction phase */
+    constexpr std::uint32_t HSPI_WPCCR_IDTR_B_0x0 = 0;
+        /** @brief DTR mode enabled for instruction phase */
+    constexpr std::uint32_t HSPI_WPCCR_IDTR_B_0x1 = 1;
+
+    /** @brief Instruction size */
+    using HSPI_WPCCR_ISIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 4, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: 8-bit instruction (value: 0)
+     *          - B_0x1: 16-bit instruction (value: 1)
+     *          - B_0x2: 24-bit instruction (value: 2)
+     *          - B_0x3: 32-bit instruction (value: 3)
+     */
+        /** @brief 8-bit instruction */
+    constexpr std::uint32_t HSPI_WPCCR_ISIZE_B_0x0 = 0;
+        /** @brief 16-bit instruction */
+    constexpr std::uint32_t HSPI_WPCCR_ISIZE_B_0x1 = 1;
+        /** @brief 24-bit instruction */
+    constexpr std::uint32_t HSPI_WPCCR_ISIZE_B_0x2 = 2;
+        /** @brief 32-bit instruction */
+    constexpr std::uint32_t HSPI_WPCCR_ISIZE_B_0x3 = 3;
+
+    /** @brief Address mode */
+    using HSPI_WPCCR_ADMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 8, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No address (value: 0)
+     *          - B_0x1: Address on a single line (value: 1)
+     *          - B_0x2: Address on two lines (value: 2)
+     *          - B_0x3: Address on four lines (value: 3)
+     *          - B_0x4: Address on eight lines (value: 4)
+     */
+        /** @brief No address */
+    constexpr std::uint32_t HSPI_WPCCR_ADMODE_B_0x0 = 0;
+        /** @brief Address on a single line */
+    constexpr std::uint32_t HSPI_WPCCR_ADMODE_B_0x1 = 1;
+        /** @brief Address on two lines */
+    constexpr std::uint32_t HSPI_WPCCR_ADMODE_B_0x2 = 2;
+        /** @brief Address on four lines */
+    constexpr std::uint32_t HSPI_WPCCR_ADMODE_B_0x3 = 3;
+        /** @brief Address on eight lines */
+    constexpr std::uint32_t HSPI_WPCCR_ADMODE_B_0x4 = 4;
+
+    /** @brief Address double transfer rate */
+    using HSPI_WPCCR_ADDTR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 11, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DTR mode disabled for address phase (value: 0)
+     *          - B_0x1: DTR mode enabled for address phase (value: 1)
+     */
+        /** @brief DTR mode disabled for address phase */
+    constexpr std::uint32_t HSPI_WPCCR_ADDTR_B_0x0 = 0;
+        /** @brief DTR mode enabled for address phase */
+    constexpr std::uint32_t HSPI_WPCCR_ADDTR_B_0x1 = 1;
+
+    /** @brief Address size */
+    using HSPI_WPCCR_ADSIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 12, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: 8-bit address (value: 0)
+     *          - B_0x1: 16-bit address (value: 1)
+     *          - B_0x2: 24-bit address (value: 2)
+     *          - B_0x3: 32-bit address (value: 3)
+     */
+        /** @brief 8-bit address */
+    constexpr std::uint32_t HSPI_WPCCR_ADSIZE_B_0x0 = 0;
+        /** @brief 16-bit address */
+    constexpr std::uint32_t HSPI_WPCCR_ADSIZE_B_0x1 = 1;
+        /** @brief 24-bit address */
+    constexpr std::uint32_t HSPI_WPCCR_ADSIZE_B_0x2 = 2;
+        /** @brief 32-bit address */
+    constexpr std::uint32_t HSPI_WPCCR_ADSIZE_B_0x3 = 3;
+
+    /** @brief Alternate-byte mode */
+    using HSPI_WPCCR_ABMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No alternate bytes (value: 0)
+     *          - B_0x1: Alternate bytes on a single line (value: 1)
+     *          - B_0x2: Alternate bytes on two lines (value: 2)
+     *          - B_0x3: Alternate bytes on four lines (value: 3)
+     *          - B_0x4: Alternate bytes on eight lines (value: 4)
+     *          - B_0x5: Alternate bytes on 16 lines (value: 5)
+     */
+        /** @brief No alternate bytes */
+    constexpr std::uint32_t HSPI_WPCCR_ABMODE_B_0x0 = 0;
+        /** @brief Alternate bytes on a single line */
+    constexpr std::uint32_t HSPI_WPCCR_ABMODE_B_0x1 = 1;
+        /** @brief Alternate bytes on two lines */
+    constexpr std::uint32_t HSPI_WPCCR_ABMODE_B_0x2 = 2;
+        /** @brief Alternate bytes on four lines */
+    constexpr std::uint32_t HSPI_WPCCR_ABMODE_B_0x3 = 3;
+        /** @brief Alternate bytes on eight lines */
+    constexpr std::uint32_t HSPI_WPCCR_ABMODE_B_0x4 = 4;
+        /** @brief Alternate bytes on 16 lines */
+    constexpr std::uint32_t HSPI_WPCCR_ABMODE_B_0x5 = 5;
+
+    /** @brief Alternate bytes double transfer rate */
+    using HSPI_WPCCR_ABDTR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 19, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DTR mode disabled for alternate bytes phase (value: 0)
+     *          - B_0x1: DTR mode enabled for alternate bytes phase (value: 1)
+     */
+        /** @brief DTR mode disabled for alternate bytes phase */
+    constexpr std::uint32_t HSPI_WPCCR_ABDTR_B_0x0 = 0;
+        /** @brief DTR mode enabled for alternate bytes phase */
+    constexpr std::uint32_t HSPI_WPCCR_ABDTR_B_0x1 = 1;
+
+    /** @brief Alternate bytes size */
+    using HSPI_WPCCR_ABSIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 20, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: 8-bit alternate bytes (value: 0)
+     *          - B_0x1: 16-bit alternate bytes (value: 1)
+     *          - B_0x2: 24-bit alternate bytes (value: 2)
+     *          - B_0x3: 32-bit alternate bytes (value: 3)
+     */
+        /** @brief 8-bit alternate bytes */
+    constexpr std::uint32_t HSPI_WPCCR_ABSIZE_B_0x0 = 0;
+        /** @brief 16-bit alternate bytes */
+    constexpr std::uint32_t HSPI_WPCCR_ABSIZE_B_0x1 = 1;
+        /** @brief 24-bit alternate bytes */
+    constexpr std::uint32_t HSPI_WPCCR_ABSIZE_B_0x2 = 2;
+        /** @brief 32-bit alternate bytes */
+    constexpr std::uint32_t HSPI_WPCCR_ABSIZE_B_0x3 = 3;
+
+    /** @brief Data mode */
+    using HSPI_WPCCR_DMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 24, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No data (value: 0)
+     *          - B_0x1: Data on a single line (value: 1)
+     *          - B_0x2: Data on two lines (value: 2)
+     *          - B_0x3: Data on four lines (value: 3)
+     *          - B_0x4: Data on eight lines (value: 4)
+     */
+        /** @brief No data */
+    constexpr std::uint32_t HSPI_WPCCR_DMODE_B_0x0 = 0;
+        /** @brief Data on a single line */
+    constexpr std::uint32_t HSPI_WPCCR_DMODE_B_0x1 = 1;
+        /** @brief Data on two lines */
+    constexpr std::uint32_t HSPI_WPCCR_DMODE_B_0x2 = 2;
+        /** @brief Data on four lines */
+    constexpr std::uint32_t HSPI_WPCCR_DMODE_B_0x3 = 3;
+        /** @brief Data on eight lines */
+    constexpr std::uint32_t HSPI_WPCCR_DMODE_B_0x4 = 4;
+
+    /** @brief Data double transfer rate */
+    using HSPI_WPCCR_DDTR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 27, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DTR mode disabled for data phase (value: 0)
+     *          - B_0x1: DTR mode enabled for data phase (value: 1)
+     */
+        /** @brief DTR mode disabled for data phase */
+    constexpr std::uint32_t HSPI_WPCCR_DDTR_B_0x0 = 0;
+        /** @brief DTR mode enabled for data phase */
+    constexpr std::uint32_t HSPI_WPCCR_DDTR_B_0x1 = 1;
+
+    /** @brief DQS enable */
+    using HSPI_WPCCR_DQSE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 29, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DQS disabled (value: 0)
+     *          - B_0x1: DQS enabled (value: 1)
+     */
+        /** @brief DQS disabled */
+    constexpr std::uint32_t HSPI_WPCCR_DQSE_B_0x0 = 0;
+        /** @brief DQS enabled */
+    constexpr std::uint32_t HSPI_WPCCR_DQSE_B_0x1 = 1;
+
+    /** @brief HSPI wrap timing configuration register */
+    using HSPI_WPTCR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x148, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Number of dummy cycles */
+    using HSPI_WPTCR_DCYC = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 5, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Delay hold quarter cycle */
+    using HSPI_WPTCR_DHQC = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 28, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No quarter cycle delay (value: 0)
+     *          - B_0x1: Quarter cycle delay inserted (value: 1)
+     */
+        /** @brief No quarter cycle delay */
+    constexpr std::uint32_t HSPI_WPTCR_DHQC_B_0x0 = 0;
+        /** @brief Quarter cycle delay inserted */
+    constexpr std::uint32_t HSPI_WPTCR_DHQC_B_0x1 = 1;
+
+    /** @brief Sample shift */
+    using HSPI_WPTCR_SSHIFT = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 30, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No shift (value: 0)
+     *          - B_0x1: 1/2 cycle shift (value: 1)
+     */
+        /** @brief No shift */
+    constexpr std::uint32_t HSPI_WPTCR_SSHIFT_B_0x0 = 0;
+        /** @brief 1/2 cycle shift */
+    constexpr std::uint32_t HSPI_WPTCR_SSHIFT_B_0x1 = 1;
+
+    /** @brief HSPI wrap instruction register */
+    using HSPI_WPIR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x150, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [31: 0]: Instruction */
+    using HSPI_WPIR_INSTRUCTION = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI wrap alternate bytes register */
+    using HSPI_WPABR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x160, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [31: 0]: Alternate bytes */
+    using HSPI_WPABR_ALTERNATE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI write communication configuration register */
+    using HSPI_WCCR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x180, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Instruction mode */
+    using HSPI_WCCR_IMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No instruction (value: 0)
+     *          - B_0x1: Instruction on a single line (value: 1)
+     *          - B_0x2: Instruction on two lines (value: 2)
+     *          - B_0x3: Instruction on four lines (value: 3)
+     *          - B_0x4: Instruction on eight lines (value: 4)
+     */
+        /** @brief No instruction */
+    constexpr std::uint32_t HSPI_WCCR_IMODE_B_0x0 = 0;
+        /** @brief Instruction on a single line */
+    constexpr std::uint32_t HSPI_WCCR_IMODE_B_0x1 = 1;
+        /** @brief Instruction on two lines */
+    constexpr std::uint32_t HSPI_WCCR_IMODE_B_0x2 = 2;
+        /** @brief Instruction on four lines */
+    constexpr std::uint32_t HSPI_WCCR_IMODE_B_0x3 = 3;
+        /** @brief Instruction on eight lines */
+    constexpr std::uint32_t HSPI_WCCR_IMODE_B_0x4 = 4;
+
+    /** @brief Instruction double transfer rate */
+    using HSPI_WCCR_IDTR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DTR mode disabled for instruction phase (value: 0)
+     *          - B_0x1: DTR mode enabled for instruction phase (value: 1)
+     */
+        /** @brief DTR mode disabled for instruction phase */
+    constexpr std::uint32_t HSPI_WCCR_IDTR_B_0x0 = 0;
+        /** @brief DTR mode enabled for instruction phase */
+    constexpr std::uint32_t HSPI_WCCR_IDTR_B_0x1 = 1;
+
+    /** @brief Instruction size */
+    using HSPI_WCCR_ISIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 4, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: 8-bit instruction (value: 0)
+     *          - B_0x1: 16-bit instruction (value: 1)
+     *          - B_0x2: 24-bit instruction (value: 2)
+     *          - B_0x3: 32-bit instruction (value: 3)
+     */
+        /** @brief 8-bit instruction */
+    constexpr std::uint32_t HSPI_WCCR_ISIZE_B_0x0 = 0;
+        /** @brief 16-bit instruction */
+    constexpr std::uint32_t HSPI_WCCR_ISIZE_B_0x1 = 1;
+        /** @brief 24-bit instruction */
+    constexpr std::uint32_t HSPI_WCCR_ISIZE_B_0x2 = 2;
+        /** @brief 32-bit instruction */
+    constexpr std::uint32_t HSPI_WCCR_ISIZE_B_0x3 = 3;
+
+    /** @brief Address mode */
+    using HSPI_WCCR_ADMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 8, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No address (value: 0)
+     *          - B_0x1: Address on a single line (value: 1)
+     *          - B_0x2: Address on two lines (value: 2)
+     *          - B_0x3: Address on four lines (value: 3)
+     *          - B_0x4: Address on eight lines (value: 4)
+     */
+        /** @brief No address */
+    constexpr std::uint32_t HSPI_WCCR_ADMODE_B_0x0 = 0;
+        /** @brief Address on a single line */
+    constexpr std::uint32_t HSPI_WCCR_ADMODE_B_0x1 = 1;
+        /** @brief Address on two lines */
+    constexpr std::uint32_t HSPI_WCCR_ADMODE_B_0x2 = 2;
+        /** @brief Address on four lines */
+    constexpr std::uint32_t HSPI_WCCR_ADMODE_B_0x3 = 3;
+        /** @brief Address on eight lines */
+    constexpr std::uint32_t HSPI_WCCR_ADMODE_B_0x4 = 4;
+
+    /** @brief Address double transfer rate */
+    using HSPI_WCCR_ADDTR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 11, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DTR mode disabled for address phase (value: 0)
+     *          - B_0x1: DTR mode enabled for address phase (value: 1)
+     */
+        /** @brief DTR mode disabled for address phase */
+    constexpr std::uint32_t HSPI_WCCR_ADDTR_B_0x0 = 0;
+        /** @brief DTR mode enabled for address phase */
+    constexpr std::uint32_t HSPI_WCCR_ADDTR_B_0x1 = 1;
+
+    /** @brief Address size */
+    using HSPI_WCCR_ADSIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 12, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: 8-bit address (value: 0)
+     *          - B_0x1: 16-bit address (value: 1)
+     *          - B_0x2: 24-bit address (value: 2)
+     *          - B_0x3: 32-bit address (value: 3)
+     */
+        /** @brief 8-bit address */
+    constexpr std::uint32_t HSPI_WCCR_ADSIZE_B_0x0 = 0;
+        /** @brief 16-bit address */
+    constexpr std::uint32_t HSPI_WCCR_ADSIZE_B_0x1 = 1;
+        /** @brief 24-bit address */
+    constexpr std::uint32_t HSPI_WCCR_ADSIZE_B_0x2 = 2;
+        /** @brief 32-bit address */
+    constexpr std::uint32_t HSPI_WCCR_ADSIZE_B_0x3 = 3;
+
+    /** @brief Alternate-byte mode */
+    using HSPI_WCCR_ABMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No alternate bytes (value: 0)
+     *          - B_0x1: Alternate bytes on a single line (value: 1)
+     *          - B_0x2: Alternate bytes on two lines (value: 2)
+     *          - B_0x3: Alternate bytes on four lines (value: 3)
+     *          - B_0x4: Alternate bytes on eight lines (value: 4)
+     */
+        /** @brief No alternate bytes */
+    constexpr std::uint32_t HSPI_WCCR_ABMODE_B_0x0 = 0;
+        /** @brief Alternate bytes on a single line */
+    constexpr std::uint32_t HSPI_WCCR_ABMODE_B_0x1 = 1;
+        /** @brief Alternate bytes on two lines */
+    constexpr std::uint32_t HSPI_WCCR_ABMODE_B_0x2 = 2;
+        /** @brief Alternate bytes on four lines */
+    constexpr std::uint32_t HSPI_WCCR_ABMODE_B_0x3 = 3;
+        /** @brief Alternate bytes on eight lines */
+    constexpr std::uint32_t HSPI_WCCR_ABMODE_B_0x4 = 4;
+
+    /** @brief Alternate bytes double-transfer rate */
+    using HSPI_WCCR_ABDTR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 19, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DTR mode disabled for alternate-bytes phase (value: 0)
+     *          - B_0x1: DTR mode enabled for alternate-bytes phase (value: 1)
+     */
+        /** @brief DTR mode disabled for alternate-bytes phase */
+    constexpr std::uint32_t HSPI_WCCR_ABDTR_B_0x0 = 0;
+        /** @brief DTR mode enabled for alternate-bytes phase */
+    constexpr std::uint32_t HSPI_WCCR_ABDTR_B_0x1 = 1;
+
+    /** @brief Alternate bytes size */
+    using HSPI_WCCR_ABSIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 20, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: 8-bit alternate bytes (value: 0)
+     *          - B_0x1: 16-bit alternate bytes (value: 1)
+     *          - B_0x2: 24-bit alternate bytes (value: 2)
+     *          - B_0x3: 32-bit alternate bytes (value: 3)
+     */
+        /** @brief 8-bit alternate bytes */
+    constexpr std::uint32_t HSPI_WCCR_ABSIZE_B_0x0 = 0;
+        /** @brief 16-bit alternate bytes */
+    constexpr std::uint32_t HSPI_WCCR_ABSIZE_B_0x1 = 1;
+        /** @brief 24-bit alternate bytes */
+    constexpr std::uint32_t HSPI_WCCR_ABSIZE_B_0x2 = 2;
+        /** @brief 32-bit alternate bytes */
+    constexpr std::uint32_t HSPI_WCCR_ABSIZE_B_0x3 = 3;
+
+    /** @brief Data mode */
+    using HSPI_WCCR_DMODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 24, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No data (value: 0)
+     *          - B_0x1: Data on a single line (value: 1)
+     *          - B_0x2: Data on two lines (value: 2)
+     *          - B_0x3: Data on four lines (value: 3)
+     *          - B_0x4: Data on eight lines (value: 4)
+     *          - B_0x5: Data on 16 lines (value: 5)
+     */
+        /** @brief No data */
+    constexpr std::uint32_t HSPI_WCCR_DMODE_B_0x0 = 0;
+        /** @brief Data on a single line */
+    constexpr std::uint32_t HSPI_WCCR_DMODE_B_0x1 = 1;
+        /** @brief Data on two lines */
+    constexpr std::uint32_t HSPI_WCCR_DMODE_B_0x2 = 2;
+        /** @brief Data on four lines */
+    constexpr std::uint32_t HSPI_WCCR_DMODE_B_0x3 = 3;
+        /** @brief Data on eight lines */
+    constexpr std::uint32_t HSPI_WCCR_DMODE_B_0x4 = 4;
+        /** @brief Data on 16 lines */
+    constexpr std::uint32_t HSPI_WCCR_DMODE_B_0x5 = 5;
+
+    /** @brief data double transfer rate */
+    using HSPI_WCCR_DDTR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 27, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DTR mode disabled for data phase (value: 0)
+     *          - B_0x1: DTR mode enabled for data phase (value: 1)
+     */
+        /** @brief DTR mode disabled for data phase */
+    constexpr std::uint32_t HSPI_WCCR_DDTR_B_0x0 = 0;
+        /** @brief DTR mode enabled for data phase */
+    constexpr std::uint32_t HSPI_WCCR_DDTR_B_0x1 = 1;
+
+    /** @brief DQS enable */
+    using HSPI_WCCR_DQSE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 29, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DQS disabled (value: 0)
+     *          - B_0x1: DQS enabled (value: 1)
+     */
+        /** @brief DQS disabled */
+    constexpr std::uint32_t HSPI_WCCR_DQSE_B_0x0 = 0;
+        /** @brief DQS enabled */
+    constexpr std::uint32_t HSPI_WCCR_DQSE_B_0x1 = 1;
+
+    /** @brief HSPI write timing configuration register */
+    using HSPI_WTCR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x188, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Number of dummy cycles */
+    using HSPI_WTCR_DCYC = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 5, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI write instruction register */
+    using HSPI_WIR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x190, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Instruction */
+    using HSPI_WIR_INSTRUCTION = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI write alternate bytes register */
+    using HSPI_WABR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x1A0, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [31: 0]: Alternate bytes */
+    using HSPI_WABR_ALTERNATE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI HyperBus latency configuration register */
+    using HSPI_HLCR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x200, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Latency mode */
+    using HSPI_HLCR_LM = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Variable initial latency (value: 0)
+     *          - B_0x1: Fixed latency (value: 1)
+     */
+        /** @brief Variable initial latency */
+    constexpr std::uint32_t HSPI_HLCR_LM_B_0x0 = 0;
+        /** @brief Fixed latency */
+    constexpr std::uint32_t HSPI_HLCR_LM_B_0x1 = 1;
+
+    /** @brief Write zero latency */
+    using HSPI_HLCR_WZL = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Latency on write accesses (value: 0)
+     *          - B_0x1: No latency on write accesses (value: 1)
+     */
+        /** @brief Latency on write accesses */
+    constexpr std::uint32_t HSPI_HLCR_WZL_B_0x0 = 0;
+        /** @brief No latency on write accesses */
+    constexpr std::uint32_t HSPI_HLCR_WZL_B_0x1 = 1;
+
+    /** @brief [7: 0]: Access time */
+    using HSPI_HLCR_TACC = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 8, 8, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Read write recovery time */
+    using HSPI_HLCR_TRWR = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 8, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI full-cycle calibration configuration */
+    using HSPI_CALFCR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x210, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [6: 0]: Fine calibration */
+    using HSPI_CALFCR_FINE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 7, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [4: 0]: Coarse calibration */
+    using HSPI_CALFCR_COARSE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 5, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Max value */
+    using HSPI_CALFCR_CALMAX = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 31, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI DLL master calibration configuration */
+    using HSPI_CALMR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x218, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [6: 0]: Fine calibration */
+    using HSPI_CALMR_FINE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 7, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [4: 0]: Coarse calibration */
+    using HSPI_CALMR_COARSE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 5, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI DLL slave output calibration configuration */
+    using HSPI_CALSOR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x220, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [6: 0]: Fine calibration */
+    using HSPI_CALSOR_FINE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 7, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [4: 0]: Coarse calibration */
+    using HSPI_CALSOR_COARSE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 5, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief HSPI DLL slave input calibration configuration */
+    using HSPI_CALSIR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x228, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [6: 0]: Fine calibration */
+    using HSPI_CALSIR_FINE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 7, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief [4: 0]: Coarse calibration */
+    using HSPI_CALSIR_COARSE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 5, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+}
+
+#endif

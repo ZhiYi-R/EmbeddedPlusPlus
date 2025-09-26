@@ -1,0 +1,434 @@
+/* Auto-generated file. Do not edit manually. */
+
+#ifndef EMBEDDED_PP_STM32WBA55_SAES_HPP
+#define EMBEDDED_PP_STM32WBA55_SAES_HPP
+
+#include <cstdint>
+#include "Core/Common.hpp"
+#include "Core/BitField.hpp"
+#include "Core/Register.hpp"
+
+/** @brief Secure AES coprocessor */
+namespace STM32WBA55::SAES {
+
+    /** @brief SAES control register */
+    using SAES_CR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x0, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Enable This bit enables/disables the SAES peripheral. At any moment, clearing then setting the bit re-initializes the SAES peripheral. When KMOD[1:0] is different from 00, using IPRST bit is recommended instead. This bit is automatically cleared by hardware upon the completion of the key preparation (MODE[1:0] at 01) and upon the completion of GCM/GMAC/CCM initialization phase. The bit cannot be set as long as KEYVALID=0. The situation is similar for one of the following configurations: 1. KMOD[1:0] at 01 (wrap), CHMOD[2:0] at 11 (GCM) 2. KMOD[1:0] at 01 (wrap), CHMOD[2:0] at 10 (CTR), MODE[1:0] at 00 (encryption). */
+    using SAES_CR_EN = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Disable (value: 0)
+     *          - B_0x1: Enable (value: 1)
+     */
+        /** @brief Disable */
+    constexpr std::uint32_t SAES_CR_EN_B_0x0 = 0;
+        /** @brief Enable */
+    constexpr std::uint32_t SAES_CR_EN_B_0x1 = 1;
+
+    /** @brief Data type This bitfield defines the format of data written in the SAES_DINR register or read from the SAES_DOUTR register, through selecting the mode of data swapping. This swapping is defined in Section23.4.17: SAES data registers and data swapping. Attempts to write the bitfield are ignored when BUSY is set, as well as when EN is set before the write access and it is not cleared by that write access. */
+    using SAES_CR_DATATYPE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No swapping (32-bit data). (value: 0)
+     *          - B_0x1: Half-word swapping (16-bit data) (value: 1)
+     *          - B_0x2: Byte swapping (8-bit data) (value: 2)
+     *          - B_0x3: Bit-level swapping (value: 3)
+     */
+        /** @brief No swapping (32-bit data). */
+    constexpr std::uint32_t SAES_CR_DATATYPE_B_0x0 = 0;
+        /** @brief Half-word swapping (16-bit data) */
+    constexpr std::uint32_t SAES_CR_DATATYPE_B_0x1 = 1;
+        /** @brief Byte swapping (8-bit data) */
+    constexpr std::uint32_t SAES_CR_DATATYPE_B_0x2 = 2;
+        /** @brief Bit-level swapping */
+    constexpr std::uint32_t SAES_CR_DATATYPE_B_0x3 = 3;
+
+    /** @brief Operating mode This bitfield selects the SAES operating mode: Attempts to write the bitfield are ignored when BUSY is set, as well as when EN is set before the write access and it is not cleared by that write access. */
+    using SAES_CR_MODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Encryption (value: 0)
+     *          - B_0x1: Key derivation (or key preparation), for ECB/CBC decryption only (value: 1)
+     *          - B_0x2: Decryption (value: 2)
+     */
+        /** @brief Encryption */
+    constexpr std::uint32_t SAES_CR_MODE_B_0x0 = 0;
+        /** @brief Key derivation (or key preparation), for ECB/CBC decryption only */
+    constexpr std::uint32_t SAES_CR_MODE_B_0x1 = 1;
+        /** @brief Decryption */
+    constexpr std::uint32_t SAES_CR_MODE_B_0x2 = 2;
+
+    /** @brief CHMOD[1:0]: Chaining mode This bitfield selects the AES chaining mode: others: Reserved Attempts to write the bitfield are ignored when BUSY is set, as well as when EN is set before the write access and it is not cleared by that write access. */
+    using SAES_CR_CHMOD = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 5, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Electronic codebook (ECB) (value: 0)
+     *          - B_0x1: Cipher-block chaining (CBC) (value: 1)
+     *          - B_0x2: Counter mode (CTR) (value: 2)
+     *          - B_0x3: Galois counter mode (GCM) and Galois message authentication code (GMAC) (value: 3)
+     */
+        /** @brief Electronic codebook (ECB) */
+    constexpr std::uint32_t SAES_CR_CHMOD_B_0x0 = 0;
+        /** @brief Cipher-block chaining (CBC) */
+    constexpr std::uint32_t SAES_CR_CHMOD_B_0x1 = 1;
+        /** @brief Counter mode (CTR) */
+    constexpr std::uint32_t SAES_CR_CHMOD_B_0x2 = 2;
+        /** @brief Galois counter mode (GCM) and Galois message authentication code (GMAC) */
+    constexpr std::uint32_t SAES_CR_CHMOD_B_0x3 = 3;
+
+    /** @brief DMA input enable When this bit is set, DMA requests are automatically generated by the peripheral during the input data phase. Setting this bit is ignored when MODE[1:0] is at 01 (key derivation). */
+    using SAES_CR_DMAINEN = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 11, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DMA for incoming data transfer is disabled (value: 0)
+     *          - B_0x1: DMA for incoming data transfer is enabled (value: 1)
+     */
+        /** @brief DMA for incoming data transfer is disabled */
+    constexpr std::uint32_t SAES_CR_DMAINEN_B_0x0 = 0;
+        /** @brief DMA for incoming data transfer is enabled */
+    constexpr std::uint32_t SAES_CR_DMAINEN_B_0x1 = 1;
+
+    /** @brief DMA output enable When this bit is set, DMA requests are automatically generated by the peripheral during the output data phase. Setting this bit is ignored when MODE[1:0] is at 01 (key derivation). */
+    using SAES_CR_DMAOUTEN = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 12, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: DMA for outgoing data transfer is disabled (value: 0)
+     *          - B_0x1: DMA for outgoing data transfer is enabled (value: 1)
+     */
+        /** @brief DMA for outgoing data transfer is disabled */
+    constexpr std::uint32_t SAES_CR_DMAOUTEN_B_0x0 = 0;
+        /** @brief DMA for outgoing data transfer is enabled */
+    constexpr std::uint32_t SAES_CR_DMAOUTEN_B_0x1 = 1;
+
+    /** @brief GCM or CCM phase selection This bitfield selects the phase, applicable only with GCM, GMAC or CCM chaining modes. This bitfield has no effect if GCM, GMAC or CCM algorithm is not selected with CHMOD[2:0]. */
+    using SAES_CR_GCMPH = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 13, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Initialization phase (value: 0)
+     *          - B_0x1: Header phase (value: 1)
+     *          - B_0x2: Payload phase (value: 2)
+     *          - B_0x3: Final phase (value: 3)
+     */
+        /** @brief Initialization phase */
+    constexpr std::uint32_t SAES_CR_GCMPH_B_0x0 = 0;
+        /** @brief Header phase */
+    constexpr std::uint32_t SAES_CR_GCMPH_B_0x1 = 1;
+        /** @brief Payload phase */
+    constexpr std::uint32_t SAES_CR_GCMPH_B_0x2 = 2;
+        /** @brief Final phase */
+    constexpr std::uint32_t SAES_CR_GCMPH_B_0x3 = 3;
+
+    /** @brief CHMOD[2] */
+    using SAES_CR_CHMOD_1 = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Key size selection This bitfield defines the key length in bits of the key used by SAES. When KMOD[1:0] is at 01 or 10, KEYSIZE also defines the length of the key to encrypt or decrypt. Attempts to write the bit are ignored when BUSY is set, as well as when the EN is set before the write access and it is not cleared by that write access. */
+    using SAES_CR_KEYSIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 18, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: 128-bit (value: 0)
+     *          - B_0x1: 256-bit (value: 1)
+     */
+        /** @brief 128-bit */
+    constexpr std::uint32_t SAES_CR_KEYSIZE_B_0x0 = 0;
+        /** @brief 256-bit */
+    constexpr std::uint32_t SAES_CR_KEYSIZE_B_0x1 = 1;
+
+    /** @brief Key protection When set, hardware-based key protection is enabled. Attempts to write the bit are ignored when BUSY is set, as well as when EN is set before the write access and it is not cleared by that write access. */
+    using SAES_CR_KEYPROT = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 19, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: When KEYVALID is set and KEYSEL[2:0]=0 application can transfer the ownership of the SAES, with its loaded key, to an application running in another security context (such as non-secure, secure). (value: 0)
+     *          - B_0x1: When KEYVALID is set, key error flag (KEIF) is set when an access to any registers is detected, this access having a security context (for example, secure, non-secure) that does not match the one of the application that loaded the key. (value: 1)
+     */
+        /** @brief When KEYVALID is set and KEYSEL[2:0]=0 application can transfer the ownership of the SAES, with its loaded key, to an application running in another security context (such as non-secure, secure). */
+    constexpr std::uint32_t SAES_CR_KEYPROT_B_0x0 = 0;
+        /** @brief When KEYVALID is set, key error flag (KEIF) is set when an access to any registers is detected, this access having a security context (for example, secure, non-secure) that does not match the one of the application that loaded the key. */
+    constexpr std::uint32_t SAES_CR_KEYPROT_B_0x1 = 1;
+
+    /** @brief Number of padding bytes in last block This padding information must be filled by software before processing the last block of GCM payload encryption or CCM payload decryption, otherwise authentication tag computation is incorrect. ... */
+    using SAES_CR_NPBLB = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 20, 4, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: All bytes are valid (no padding) (value: 0)
+     *          - B_0x1: Padding for the last LSB byte (value: 1)
+     *          - B_0xF: Padding for the 15 LSB bytes of last block. (value: 15)
+     */
+        /** @brief All bytes are valid (no padding) */
+    constexpr std::uint32_t SAES_CR_NPBLB_B_0x0 = 0;
+        /** @brief Padding for the last LSB byte */
+    constexpr std::uint32_t SAES_CR_NPBLB_B_0x1 = 1;
+        /** @brief Padding for the 15 LSB bytes of last block. */
+    constexpr std::uint32_t SAES_CR_NPBLB_B_0xF = 15;
+
+    /** @brief Key mode selection The bitfield defines how the SAES key can be used by the application. KEYSIZE must be correctly initialized when setting KMOD[1:0] different from zero. Others: Reserved With KMOD[1:0] other than zero, any attempt to configure the SAES peripheral for use by an application belonging to a different security domain (such as secure or non-secure) results in automatic key erasure and setting of the KEIF flag. Attempts to write the bitfield are ignored when BUSY is set, as well as when EN is set before the write access and it is not cleared by that write access. */
+    using SAES_CR_KMOD = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 24, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Normal key mode. Key registers are freely usable, no specific usage or protection applies to SAES_DINR and SAES_DOUTR registers. (value: 0)
+     *          - B_0x1: Wrapped key mode. Key loaded in key registers can only be used to encrypt or decrypt AES keys. Hence, when a decryption is selected, read-as-zero SAES_DOUTR register is automatically loaded into SAES key registers after a successful decryption process. (value: 1)
+     *          - B_0x2: Shared key mode. After a successful decryption process, SAES key registers are shared with the peripheral described in KSHAREID[1:0] bitfield. This sharing is valid only while KMOD[1:0] at 10 and KEYVALID=1. When a decryption is selected, read-as-zero SAES_DOUTR register is automatically loaded into SAES key registers after a successful decryption process. (value: 2)
+     */
+        /** @brief Normal key mode. Key registers are freely usable, no specific usage or protection applies to SAES_DINR and SAES_DOUTR registers. */
+    constexpr std::uint32_t SAES_CR_KMOD_B_0x0 = 0;
+        /** @brief Wrapped key mode. Key loaded in key registers can only be used to encrypt or decrypt AES keys. Hence, when a decryption is selected, read-as-zero SAES_DOUTR register is automatically loaded into SAES key registers after a successful decryption process. */
+    constexpr std::uint32_t SAES_CR_KMOD_B_0x1 = 1;
+        /** @brief Shared key mode. After a successful decryption process, SAES key registers are shared with the peripheral described in KSHAREID[1:0] bitfield. This sharing is valid only while KMOD[1:0] at 10 and KEYVALID=1. When a decryption is selected, read-as-zero SAES_DOUTR register is automatically loaded into SAES key registers after a successful decryption process. */
+    constexpr std::uint32_t SAES_CR_KMOD_B_0x2 = 2;
+
+    /** @brief Key share identification This bitfield defines, at the end of a decryption process with KMOD[1:0] at 10 (shared key), which target can read the SAES key registers using a dedicated hardware bus. Others: Reserved Attempts to write the bitfield are ignored when BUSY is set, as well as when EN is set before the write access and it is not cleared by that write access. */
+    using SAES_CR_KSHAREID = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 26, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: AES peripheral (value: 0)
+     */
+        /** @brief AES peripheral */
+    constexpr std::uint32_t SAES_CR_KSHAREID_B_0x0 = 0;
+
+    /** @brief Key selection The bitfield defines the source of the key information to use in the AES cryptographic core. Others: Reserved (if used, unfreeze SAES with IPRST) When KEYSEL[2:0] is different from zero, selected key value is available in key registers when BUSY bit is cleared and KEYVALID is set in the SAES_SR register. Otherwise, the key error flag KEIF is set. Repeated writing of KEYSEL[2:0] with the same non-zero value only triggers the loading of DHUK or BHK when KEYVALIDis cleared. When the application software changes the key selection by writing the KEYSEL[2:0] bitfield, the key registers are immediately erased and the KEYVALID flag cleared. At the end of the decryption process, if KMOD[1:0] is other than zero, KEYSEL[2:0] is cleared. With the bitfield value other than zero and KEYVALID set, the application cannot transfer the ownership of SAES with a loaded key to an application running in another security context (such as secure, non-secure). More specifically, when security of an access to any register does not match the information recorded by SAES, the KEIF flag is set. Attempts to write the bitfield are ignored when the BUSY flag of SAES_SR register is set, as well as when the EN bit of the SAES_CR register is set before the write access and it is not cleared by that write access. */
+    using SAES_CR_KEYSEL = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 28, 3, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Software key, loaded in key registers SAES_KEYx (value: 0)
+     *          - B_0x1: Derived hardware unique key (DHUK) (value: 1)
+     *          - B_0x2: Boot hardware key (BHK) (value: 2)
+     *          - B_0x4: XOR of DHUK and BHK (value: 4)
+     *          - B_0x7: Test mode key (256-bit hardware constant 0xA5A5...A5A5) (value: 7)
+     */
+        /** @brief Software key, loaded in key registers SAES_KEYx */
+    constexpr std::uint32_t SAES_CR_KEYSEL_B_0x0 = 0;
+        /** @brief Derived hardware unique key (DHUK) */
+    constexpr std::uint32_t SAES_CR_KEYSEL_B_0x1 = 1;
+        /** @brief Boot hardware key (BHK) */
+    constexpr std::uint32_t SAES_CR_KEYSEL_B_0x2 = 2;
+        /** @brief XOR of DHUK and BHK */
+    constexpr std::uint32_t SAES_CR_KEYSEL_B_0x4 = 4;
+        /** @brief Test mode key (256-bit hardware constant 0xA5A5...A5A5) */
+    constexpr std::uint32_t SAES_CR_KEYSEL_B_0x7 = 7;
+
+    /** @brief SAES peripheral software reset Setting the bit resets the SAES peripheral, putting all registers to their default values, except the IPRST bit itself. Hence, any key-relative data are lost. For this reason, it is recommended to set the bit before handing over the SAES to a less secure application. The bit must be low while writing any configuration registers. */
+    using SAES_CR_IPRST = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 31, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES status register */
+    using SAES_SR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x4, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Read error flag This bit is set when an unexpected read to the SAES_DOUTR register occurred. When set RDERRF bit has no impact on the SAES operations. This flag is cleared by setting the RWEIF bit in SAES_ICR register. If RWEIE bit is set in SAES_IER register an interrupt is generated when RDERRF is set. It is cleared by setting the RWEIF bit of the SAES_ICR register. */
+    using SAES_SR_RDERRF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No error (value: 0)
+     *          - B_0x1: Unexpected read to SAES_DOUTR register occurred during computation or data input phase. (value: 1)
+     */
+        /** @brief No error */
+    constexpr std::uint32_t SAES_SR_RDERRF_B_0x0 = 0;
+        /** @brief Unexpected read to SAES_DOUTR register occurred during computation or data input phase. */
+    constexpr std::uint32_t SAES_SR_RDERRF_B_0x1 = 1;
+
+    /** @brief Write error flag This bit is set when an unexpected write to the SAES_DINR register occurred. When set WRERRF bit has no impact on the SAES operations. This flag is cleared by setting the RWEIF bit in SAES_ICR register. If RWEIE bit is set in SAES_IER register an interrupt is generated when WRERRF is set. It is cleared by setting the RWEIF bit of the SAES_ICR register. */
+    using SAES_SR_WRERRF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 2, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No error (value: 0)
+     *          - B_0x1: Unexpected write to SAES_DINR register occurred during computation or data output phase. (value: 1)
+     */
+        /** @brief No error */
+    constexpr std::uint32_t SAES_SR_WRERRF_B_0x0 = 0;
+        /** @brief Unexpected write to SAES_DINR register occurred during computation or data output phase. */
+    constexpr std::uint32_t SAES_SR_WRERRF_B_0x1 = 1;
+
+    /** @brief Busy This flag indicates whether SAES is idle or busy. SAES is flagged as idle when disabled or when the last processing is completed. SAES is flagged as busy when processing a block data, preparing a key (ECB or CBC decryption only), fetching random number from the RNG, or transferring a shared key to target peripheral. When GCM encryption is selected, this flag must be at zero before suspending current process to manage a higher-priority message. BUSY must also be cleared before selecting the GCM final phase. */
+    using SAES_SR_BUSY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Idle (value: 0)
+     *          - B_0x1: Busy (value: 1)
+     */
+        /** @brief Idle */
+    constexpr std::uint32_t SAES_SR_BUSY_B_0x0 = 0;
+        /** @brief Busy */
+    constexpr std::uint32_t SAES_SR_BUSY_B_0x1 = 1;
+
+    /** @brief Key valid flag This bit is set by hardware when the key of size defined by KEYSIZE is loaded in SAES_KEYRx key registers. The EN bit can only be set when KEYVALID is set. In normal mode when KEYSEL[2:0] is at 000, the key must be written in the key registers in the correct sequence, otherwise the KEIF flag is set and KEYVALID remains cleared. When KEYSEL[2:0] is different from zero, the BUSY flag is automatically set by SAES. When the key is loaded successfully, BUSY is cleared and KEYVALID set. Upon an error, KEIF is set, BUSY cleared and KEYVALID remains cleared. If set, KEIF must be cleared through the SAES_ICR register, otherwise KEYVALID cannot be set. See the KEIF flag description for more details. For further information on key loading, refer to Section23.4.18: SAES key registers. */
+    using SAES_SR_KEYVALID = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 7, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Key not valid (value: 0)
+     *          - B_0x1: Key valid (value: 1)
+     */
+        /** @brief Key not valid */
+    constexpr std::uint32_t SAES_SR_KEYVALID_B_0x0 = 0;
+        /** @brief Key valid */
+    constexpr std::uint32_t SAES_SR_KEYVALID_B_0x1 = 1;
+
+    /** @brief SAES data input register */
+    using SAES_DINR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x8, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Input data word A four-fold sequential write to this bitfield during the Input phase results in writing a complete 16-bytes block of input data to the SAES peripheral. From the first to the fourth write, the corresponding data weights are [127:96], [95:64], [63:32], and [31:0]. Upon each write, the data from the 32-bit input buffer are handled by the data swap block according to the DATATYPE[1:0] bitfield, then written into the AES core 16-bytes input buffer. Reads return zero. */
+    using SAES_DINR_DIN = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES data output register */
+    using SAES_DOUTR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0xC, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Output data word This read-only bitfield fetches a 32-bit output buffer. A four-fold sequential read of this bitfield, upon the computation completion (CCF flag set), virtually reads a complete 16-byte block of output data from the SAES peripheral. Before reaching the output buffer, the data produced by the AES core are handled by the data swap block according to the DATATYPE[1:0] bitfield. Data weights from the first to the fourth read operation are: [127:96], [95:64], [63:32], and [31:0]. */
+    using SAES_DOUTR_DOUT = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES key register 0 */
+    using SAES_KEYR0 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x10, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [31:0] This write-only bitfield contains the bits [31:0] of the AES encryption or decryption key, depending on the operating mode MODE[1:0] in SAES_CR. The SAES_KEYRx registers may be written only when KEYSIZE value is correct and when the SAES peripheral is disabled (EN bit of the SAES_CR register cleared). A special writing sequence is also required, as described in KEYVALID bit of the SAES_SR register. Note that, if KEYSEL[2:0] is different from 0 and KEYVALID=0, the key is directly loaded to SAES_KEYRx registers (hence writes to key register is ignored and KEIF is set). When KEYVALID is set a write to this register clears KEYVALID if SAES is disabled. */
+    using SAES_KEYR0_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES key register 1 */
+    using SAES_KEYR1 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x14, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [63:32] Refer to the SAES_KEYR0 register for description of the KEY[255:0] bitfield. When KEYVALID is set in SAES_SR a write to this register clears KEYVALID if EN is cleared in SAES_CR. */
+    using SAES_KEYR1_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES key register 2 */
+    using SAES_KEYR2 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x18, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [95:64] Refer to the SAES_KEYR0 register for description of the KEY[255:0] bitfield. When KEYVALID is set in SAES_SR a write to this register clears KEYVALID if EN is cleared in SAES_CR. */
+    using SAES_KEYR2_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES key register 3 */
+    using SAES_KEYR3 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x1C, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [127:96] Refer to the SAES_KEYR0 register for description of the KEY[255:0] bitfield. When KEYVALID is set in SAES_SR a write to this register clears KEYVALID if EN is cleared in SAES_CR. */
+    using SAES_KEYR3_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES initialization vector register 0 */
+    using SAES_IVR0 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x20, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Initialization vector input, bits [31:0] SAES_IVRx registers store the 128-bit initialization vector or the nonce, depending on the chaining mode selected. This value is updated by the AES core after each computation round (when applicable). Write to this register is ignored when EN bit is set in SAES_SR register */
+    using SAES_IVR0_IVI = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES initialization vector register 1 */
+    using SAES_IVR1 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x24, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Initialization vector input, bits [63:32] Refer to the SAES_IVR0 register for description of the IVI[128:0] bitfield. */
+    using SAES_IVR1_IVI = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES initialization vector register 2 */
+    using SAES_IVR2 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x28, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Initialization vector input, bits [95:64] Refer to the SAES_IVR0 register for description of the IVI[128:0] bitfield. */
+    using SAES_IVR2_IVI = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES initialization vector register 3 */
+    using SAES_IVR3 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x2C, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Initialization vector input, bits [127:96] Refer to the SAES_IVR0 register for description of the IVI[128:0] bitfield. */
+    using SAES_IVR3_IVI = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES key register 4 */
+    using SAES_KEYR4 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x30, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [159:128] Refer to the SAES_KEYR0 register for description of the KEY[255:0] bitfield. Writing to this register has no effect when key size is 128-bit (KEYSIZE=0). When KEYVALID is set in SAES_SR a write to this register clears KEYVALID if EN is cleared in SAES_CR. */
+    using SAES_KEYR4_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES key register 5 */
+    using SAES_KEYR5 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x34, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [191:160] Refer to the SAES_KEYR0 register for description of the KEY[255:0] bitfield. Writing to this register has no effect when key size is 128-bit (KEYSIZE=0). When KEYVALID is set in SAES_SR a write to this register clears KEYVALID if EN is cleared in SAES_CR. */
+    using SAES_KEYR5_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES key register 6 */
+    using SAES_KEYR6 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x38, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [223:192] Refer to the SAES_KEYR0 register for description of the KEY[255:0] bitfield. Writing to this register has no effect when key size is 128-bit (KEYSIZE=0). When KEYVALID is set in SAES_SR a write to this register clears KEYVALID if EN is cleared in SAES_CR. */
+    using SAES_KEYR6_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES key register 7 */
+    using SAES_KEYR7 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x3C, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [255:224] Refer to the SAES_KEYR0 register for description of the KEY[255:0] bitfield. Writing to this register has no effect when key size is 128-bit (KEYSIZE=0). When KEYVALID is set in SAES_SR a write to this register clears KEYVALID if EN is cleared in SAES_CR. */
+    using SAES_KEYR7_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES suspend registers */
+    using SAES_SUSPR0 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x40, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data SAES_SUSPRx registers contain the complete internal register states of the SAES when the CCM processing of the current task is suspended to process a higher-priority task. Refer to Section23.4.8: SAES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in SAES_SR register. SAES_SUSPRx registers are not used in other chaining modes than CCM. */
+    using SAES_SUSPR0_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES suspend registers */
+    using SAES_SUSPR1 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x44, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data SAES_SUSPRx registers contain the complete internal register states of the SAES when the CCM processing of the current task is suspended to process a higher-priority task. Refer to Section23.4.8: SAES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in SAES_SR register. SAES_SUSPRx registers are not used in other chaining modes than CCM. */
+    using SAES_SUSPR1_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES suspend registers */
+    using SAES_SUSPR2 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x48, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data SAES_SUSPRx registers contain the complete internal register states of the SAES when the CCM processing of the current task is suspended to process a higher-priority task. Refer to Section23.4.8: SAES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in SAES_SR register. SAES_SUSPRx registers are not used in other chaining modes than CCM. */
+    using SAES_SUSPR2_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES suspend registers */
+    using SAES_SUSPR3 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x4C, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data SAES_SUSPRx registers contain the complete internal register states of the SAES when the CCM processing of the current task is suspended to process a higher-priority task. Refer to Section23.4.8: SAES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in SAES_SR register. SAES_SUSPRx registers are not used in other chaining modes than CCM. */
+    using SAES_SUSPR3_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES suspend registers */
+    using SAES_SUSPR4 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x50, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data SAES_SUSPRx registers contain the complete internal register states of the SAES when the CCM processing of the current task is suspended to process a higher-priority task. Refer to Section23.4.8: SAES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in SAES_SR register. SAES_SUSPRx registers are not used in other chaining modes than CCM. */
+    using SAES_SUSPR4_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES suspend registers */
+    using SAES_SUSPR5 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x54, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data SAES_SUSPRx registers contain the complete internal register states of the SAES when the CCM processing of the current task is suspended to process a higher-priority task. Refer to Section23.4.8: SAES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in SAES_SR register. SAES_SUSPRx registers are not used in other chaining modes than CCM. */
+    using SAES_SUSPR5_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES suspend registers */
+    using SAES_SUSPR6 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x58, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data SAES_SUSPRx registers contain the complete internal register states of the SAES when the CCM processing of the current task is suspended to process a higher-priority task. Refer to Section23.4.8: SAES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in SAES_SR register. SAES_SUSPRx registers are not used in other chaining modes than CCM. */
+    using SAES_SUSPR6_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES suspend registers */
+    using SAES_SUSPR7 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x5C, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data SAES_SUSPRx registers contain the complete internal register states of the SAES when the CCM processing of the current task is suspended to process a higher-priority task. Refer to Section23.4.8: SAES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in SAES_SR register. SAES_SUSPRx registers are not used in other chaining modes than CCM. */
+    using SAES_SUSPR7_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief SAES interrupt enable register */
+    using SAES_IER = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x300, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Computation complete flag interrupt enable This bit enables or disables (masks) the SAES interrupt generation when CCF (computation complete flag) is set. */
+    using SAES_IER_CCFIE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Disabled (masked) (value: 0)
+     *          - B_0x1: Enabled (not masked) (value: 1)
+     */
+        /** @brief Disabled (masked) */
+    constexpr std::uint32_t SAES_IER_CCFIE_B_0x0 = 0;
+        /** @brief Enabled (not masked) */
+    constexpr std::uint32_t SAES_IER_CCFIE_B_0x1 = 1;
+
+    /** @brief Read or write error interrupt enable This bit enables or disables (masks) the SAES interrupt generation when RWEIF (read and/or write error flag) is set. */
+    using SAES_IER_RWEIE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Disabled (masked) (value: 0)
+     *          - B_0x1: Enabled (not masked) (value: 1)
+     */
+        /** @brief Disabled (masked) */
+    constexpr std::uint32_t SAES_IER_RWEIE_B_0x0 = 0;
+        /** @brief Enabled (not masked) */
+    constexpr std::uint32_t SAES_IER_RWEIE_B_0x1 = 1;
+
+    /** @brief Key error interrupt enable This bit enables or disables (masks) the SAES interrupt generation when KEIF (key error flag) is set. */
+    using SAES_IER_KEIE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 2, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Disabled (masked) (value: 0)
+     *          - B_0x1: Enabled (not masked) (value: 1)
+     */
+        /** @brief Disabled (masked) */
+    constexpr std::uint32_t SAES_IER_KEIE_B_0x0 = 0;
+        /** @brief Enabled (not masked) */
+    constexpr std::uint32_t SAES_IER_KEIE_B_0x1 = 1;
+
+    /** @brief RNG error interrupt enable This bit enables or disables (masks) the SAES interrupt generation when RNGEIF (RNG error flag) is set. */
+    using SAES_IER_RNGEIE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Disabled (masked) (value: 0)
+     *          - B_0x1: Enabled (not masked) (value: 1)
+     */
+        /** @brief Disabled (masked) */
+    constexpr std::uint32_t SAES_IER_RNGEIE_B_0x0 = 0;
+        /** @brief Enabled (not masked) */
+    constexpr std::uint32_t SAES_IER_RNGEIE_B_0x1 = 1;
+
+    /** @brief SAES interrupt status register */
+    using SAES_ISR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x304, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Computation complete flag This flag indicates whether the computation is completed. It is significant only when the DMAOUTEN bit is cleared, and it may stay high when DMAOUTEN is set. CCF bit is cleared when application sets the corresponding bit of AES_ICR register. An interrupt is generated if the CCFIE bit has been previously set in the AES_IER register. */
+    using SAES_ISR_CCF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Not completed (value: 0)
+     *          - B_0x1: Completed (value: 1)
+     */
+        /** @brief Not completed */
+    constexpr std::uint32_t SAES_ISR_CCF_B_0x0 = 0;
+        /** @brief Completed */
+    constexpr std::uint32_t SAES_ISR_CCF_B_0x1 = 1;
+
+    /** @brief Read or write error interrupt flag This read-only bit is set by hardware when a RDERRF or a WRERRF error flag is set in the SAES_SR register. RWEIF bit is cleared when application sets the corresponding bit of SAES_ICR register. An interrupt is generated if the RWEIE bit has been previously set in the SAES_IER register. This flags has no meaning when key derivation mode is selected. */
+    using SAES_ISR_RWEIF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No read or write error detected (value: 0)
+     *          - B_0x1: Read or write error detected (see SAES_SR register for details) (value: 1)
+     */
+        /** @brief No read or write error detected */
+    constexpr std::uint32_t SAES_ISR_RWEIF_B_0x0 = 0;
+        /** @brief Read or write error detected (see SAES_SR register for details) */
+    constexpr std::uint32_t SAES_ISR_RWEIF_B_0x1 = 1;
+
+    /** @brief Key error interrupt flag This read-only bit is set by hardware when key information failed to load into key registers or key register usage is forbidden. Setting the corresponding bit of the SAES_ICR register clears the KEIF and generates interrupt if the KEIE bit of the SAES_IER register is set. KEIF is triggered upon any of the following errors: SAES fails to load the DHUK (KEYSEL[2:0]=001 or 100). SAES fails to load the BHK (KEYSEL[2:0]=010 or 100) respecting the correct order. AES fails to load the key shared by SAES peripheral (KMOD=10). When KEYVALID is set and either KEYPROT is set or KEYSEL[2:0] is other than 000, the security context of the application that loads the key (secure or non-secure) does not match the security attribute of the access to SAES_CR or SAES_DOUT. In this case, KEYVALID and EN bits are cleared. SAES_KEYRx register write does not respect the correct order. (For KEYSIZE=0, SAES_KEYR0 then SAES_KEYR1 then SAES_KEYR2 then SAES_KEYR3 register, or reverse. For KEYSIZE set, SAES_KEYR0 then SAES_KEYR1 then SAES_KEYR2 then SAES_KEYR3 then SAES_KEYR4 then SAES_KEYR5 then SAES_KEYR6 then SAES_KEYR7, or reverse). KEIF must be cleared by the application software, otherwise KEYVALID cannot be set. */
+    using SAES_ISR_KEIF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 2, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No key error detected (value: 0)
+     *          - B_0x1: Key information failed to load into key registers, or key register use is forbidden (value: 1)
+     */
+        /** @brief No key error detected */
+    constexpr std::uint32_t SAES_ISR_KEIF_B_0x0 = 0;
+        /** @brief Key information failed to load into key registers, or key register use is forbidden */
+    constexpr std::uint32_t SAES_ISR_KEIF_B_0x1 = 1;
+
+    /** @brief RNG error interrupt flag This read-only bit is set by hardware when an error is detected on RNG bus interface (e.g. bad entropy). RNGEIE bit is cleared when application sets the corresponding bit of SAES_ICR register. An interrupt is generated if the RNGEIE bit has been previously set in the SAES_IER register. Clearing this bit triggers the reload of a new random number from RNG peripheral. */
+    using SAES_ISR_RNGEIF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: RNG bus is functional (value: 0)
+     *          - B_0x1: Error detected on RNG bus interface (random seed fetching error) (value: 1)
+     */
+        /** @brief RNG bus is functional */
+    constexpr std::uint32_t SAES_ISR_RNGEIF_B_0x0 = 0;
+        /** @brief Error detected on RNG bus interface (random seed fetching error) */
+    constexpr std::uint32_t SAES_ISR_RNGEIF_B_0x1 = 1;
+
+    /** @brief SAES interrupt clear register */
+    using SAES_ICR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x308, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Computation complete flag clear Setting this bit clears the CCF status bit of the SAES_ISR register. */
+    using SAES_ICR_CCF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Read or write error interrupt flag clear Setting this bit clears the RWEIF status bit of the SAES_ISR register, and clears both RDERRF and WRERRF flags in the SAES_SR register. */
+    using SAES_ICR_RWEIF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Key error interrupt flag clear Setting this bit clears the KEIF status bit of the SAES_ISR register. */
+    using SAES_ICR_KEIF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 2, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief RNG error interrupt flag clear Application must set this bit to clear the RNGEIF status bit in SAES_ISR register. */
+    using SAES_ICR_RNGEIF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+}
+
+#endif

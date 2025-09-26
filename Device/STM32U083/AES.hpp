@@ -1,0 +1,357 @@
+/* Auto-generated file. Do not edit manually. */
+
+#ifndef EMBEDDED_PP_STM32U083_AES_HPP
+#define EMBEDDED_PP_STM32U083_AES_HPP
+
+#include <cstdint>
+#include "Core/Common.hpp"
+#include "Core/BitField.hpp"
+#include "Core/Register.hpp"
+
+/** @brief AES register block */
+namespace STM32U083::AES {
+
+    /** @brief AES control register */
+    using AES_CR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x0, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Enable This bit enables/disables the AES peripheral. At any moment, clearing then setting the bit re-initializes the AES peripheral. This bit is automatically cleared by hardware upon the completion of the key preparation (MODE[1:0] at 0x1) and upon the completion of GCM/GMAC/CCM initialization phase. The bit cannot be set as long as KEYVALID1is cleared */
+    using AES_CR_EN = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Disable (value: 0)
+     *          - B_0x1: Enable (value: 1)
+     */
+        /** @brief Disable */
+    constexpr std::uint32_t AES_CR_EN_B_0x0 = 0;
+        /** @brief Enable */
+    constexpr std::uint32_t AES_CR_EN_B_0x1 = 1;
+
+    /** @brief Data type This bitfield defines the format of data written in the AES_DINR register or read from the AES_DOUTR register, through selecting the mode of data swapping. This swapping is defined in Section121.4.14: AES data registers and data swapping. Attempts to write the bitfield are ignored when EN is set before the write access and it is not cleared by that write access. */
+    using AES_CR_DATATYPE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No swapping (32-bit data). (value: 0)
+     *          - B_0x1: Half-word swapping (16-bit data) (value: 1)
+     *          - B_0x2: Byte swapping (8-bit data) (value: 2)
+     *          - B_0x3: Bit-level swapping (value: 3)
+     */
+        /** @brief No swapping (32-bit data). */
+    constexpr std::uint32_t AES_CR_DATATYPE_B_0x0 = 0;
+        /** @brief Half-word swapping (16-bit data) */
+    constexpr std::uint32_t AES_CR_DATATYPE_B_0x1 = 1;
+        /** @brief Byte swapping (8-bit data) */
+    constexpr std::uint32_t AES_CR_DATATYPE_B_0x2 = 2;
+        /** @brief Bit-level swapping */
+    constexpr std::uint32_t AES_CR_DATATYPE_B_0x3 = 3;
+
+    /** @brief Operating mode This bitfield selects the AES operating mode: Attempts to write the bitfield are ignored when EN is set before the write access and it is not cleared by that write access. */
+    using AES_CR_MODE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Encryption (value: 0)
+     *          - B_0x1: Key derivation (or key preparation), for ECB/CBC decryption only (value: 1)
+     *          - B_0x2: Decryption (value: 2)
+     */
+        /** @brief Encryption */
+    constexpr std::uint32_t AES_CR_MODE_B_0x0 = 0;
+        /** @brief Key derivation (or key preparation), for ECB/CBC decryption only */
+    constexpr std::uint32_t AES_CR_MODE_B_0x1 = 1;
+        /** @brief Decryption */
+    constexpr std::uint32_t AES_CR_MODE_B_0x2 = 2;
+
+    /** @brief CHMOD[1:0]: Chaining mode This bitfield selects the AES chaining mode: others: Reserved Attempts to write the bitfield are ignored when EN is set before the write access and it is not cleared by that write access. */
+    using AES_CR_CHMOD = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 5, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Electronic codebook (ECB) (value: 0)
+     *          - B_0x1: Cipher-block chaining (CBC) (value: 1)
+     *          - B_0x2: Counter mode (CTR) (value: 2)
+     *          - B_0x3: Galois counter mode (GCM) and Galois message authentication code (GMAC) (value: 3)
+     */
+        /** @brief Electronic codebook (ECB) */
+    constexpr std::uint32_t AES_CR_CHMOD_B_0x0 = 0;
+        /** @brief Cipher-block chaining (CBC) */
+    constexpr std::uint32_t AES_CR_CHMOD_B_0x1 = 1;
+        /** @brief Counter mode (CTR) */
+    constexpr std::uint32_t AES_CR_CHMOD_B_0x2 = 2;
+        /** @brief Galois counter mode (GCM) and Galois message authentication code (GMAC) */
+    constexpr std::uint32_t AES_CR_CHMOD_B_0x3 = 3;
+
+    /** @brief DMA input enable This bit enables automatic generation of DMA requests during the data phase, for incoming data transfers to AES via DMA. Setting this bit is ignored when MODE[1:0] is at 0x1 (key derivation). */
+    using AES_CR_DMAINEN = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 11, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Disable (value: 0)
+     *          - B_0x1: Enable (value: 1)
+     */
+        /** @brief Disable */
+    constexpr std::uint32_t AES_CR_DMAINEN_B_0x0 = 0;
+        /** @brief Enable */
+    constexpr std::uint32_t AES_CR_DMAINEN_B_0x1 = 1;
+
+    /** @brief DMA output enable This bit enables automatic generation of DMA requests during the data phase, for outgoing data transfers from AES via DMA. Setting this bit is ignored when MODE[1:0] is at 0x1 (key derivation). */
+    using AES_CR_DMAOUTEN = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 12, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Disable (value: 0)
+     *          - B_0x1: Enable (value: 1)
+     */
+        /** @brief Disable */
+    constexpr std::uint32_t AES_CR_DMAOUTEN_B_0x0 = 0;
+        /** @brief Enable */
+    constexpr std::uint32_t AES_CR_DMAOUTEN_B_0x1 = 1;
+
+    /** @brief GCM or CCM phase selection This bitfield selects the phase, applicable only with GCM, GMAC or CCM chaining modes. */
+    using AES_CR_GCMPH = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 13, 2, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Initialization phase (value: 0)
+     *          - B_0x1: Header phase (value: 1)
+     *          - B_0x2: Payload phase (value: 2)
+     *          - B_0x3: Final phase (value: 3)
+     */
+        /** @brief Initialization phase */
+    constexpr std::uint32_t AES_CR_GCMPH_B_0x0 = 0;
+        /** @brief Header phase */
+    constexpr std::uint32_t AES_CR_GCMPH_B_0x1 = 1;
+        /** @brief Payload phase */
+    constexpr std::uint32_t AES_CR_GCMPH_B_0x2 = 2;
+        /** @brief Final phase */
+    constexpr std::uint32_t AES_CR_GCMPH_B_0x3 = 3;
+
+    /** @brief CHMOD[2] */
+    using AES_CR_CHMOD_1 = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 16, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Key size selection This bitfield defines the key length in bits of the key used by AES. Attempts to write the bit are ignored when the EN is set before the write access and it is not cleared by that write access. */
+    using AES_CR_KEYSIZE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 18, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: 128-bit (value: 0)
+     *          - B_0x1: 256-bit (value: 1)
+     */
+        /** @brief 128-bit */
+    constexpr std::uint32_t AES_CR_KEYSIZE_B_0x0 = 0;
+        /** @brief 256-bit */
+    constexpr std::uint32_t AES_CR_KEYSIZE_B_0x1 = 1;
+
+    /** @brief Number of padding bytes in last block This padding information must be filled by software before processing the last block of GCM payload encryption or CCM payload decryption, otherwise authentication tag computation is incorrect. ... */
+    using AES_CR_NPBLB = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 20, 4, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: All bytes are valid (no padding) (value: 0)
+     *          - B_0x1: Padding for the last LSB byte (value: 1)
+     *          - B_0xF: Padding for the 15 LSB bytes of last block. (value: 15)
+     */
+        /** @brief All bytes are valid (no padding) */
+    constexpr std::uint32_t AES_CR_NPBLB_B_0x0 = 0;
+        /** @brief Padding for the last LSB byte */
+    constexpr std::uint32_t AES_CR_NPBLB_B_0x1 = 1;
+        /** @brief Padding for the 15 LSB bytes of last block. */
+    constexpr std::uint32_t AES_CR_NPBLB_B_0xF = 15;
+
+    /** @brief AES peripheral software reset Setting the bit resets the AES peripheral, putting all registers to their default values, except the IPRST bit itself. Hence, any key-relative data are lost. For this reason, it is recommended to set the bit before handing over the AES to a less secure application. The bit must be kept low while writing any configuration registers. */
+    using AES_CR_IPRST = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 31, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES status register */
+    using AES_SR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x4, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Read error flag This bit is set when an unexpected read to the AES_DOUTR register occurred. When set RDERRF bit has no impact on the AES operations. The flag setting generates an interrupt if the RWEIE bit of the AES_IER register is set. The flag is cleared by setting the RWEIF bit of the AES_ICR register. */
+    using AES_SR_RDERRF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No error (value: 0)
+     *          - B_0x1: Unexpected read to AES_DOUTR register occurred during computation or data input phase. (value: 1)
+     */
+        /** @brief No error */
+    constexpr std::uint32_t AES_SR_RDERRF_B_0x0 = 0;
+        /** @brief Unexpected read to AES_DOUTR register occurred during computation or data input phase. */
+    constexpr std::uint32_t AES_SR_RDERRF_B_0x1 = 1;
+
+    /** @brief Write error flag This bit is set when an unexpected write to the AES_DINR register occurred. When set WRERRF bit has no impact on the AES operations. The flag setting generates an interrupt if the RWEIE bit of the AES_IER register is set. The flag is cleared by setting the RWEIF bit of the AES_ICR register. */
+    using AES_SR_WRERRF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 2, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No error (value: 0)
+     *          - B_0x1: Unexpected write to AES_DINR register occurred during computation or data output phase. (value: 1)
+     */
+        /** @brief No error */
+    constexpr std::uint32_t AES_SR_WRERRF_B_0x0 = 0;
+        /** @brief Unexpected write to AES_DINR register occurred during computation or data output phase. */
+    constexpr std::uint32_t AES_SR_WRERRF_B_0x1 = 1;
+
+    /** @brief Busy This flag indicates whether AES is idle or busy. AES is flagged as idle when disabled (when EN is low) or when the last processing is completed. AES is flagged as busy when processing a block data, preparing a key (ECB or CBC decryption only). When GCM encryption is selected, this flag must be at zero before suspending current process to manage a higher-priority message. */
+    using AES_SR_BUSY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 3, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Idle (value: 0)
+     *          - B_0x1: Busy (value: 1)
+     */
+        /** @brief Idle */
+    constexpr std::uint32_t AES_SR_BUSY_B_0x0 = 0;
+        /** @brief Busy */
+    constexpr std::uint32_t AES_SR_BUSY_B_0x1 = 1;
+
+    /** @brief Key valid flag This bit is set by hardware when the key of size defined by KEYSIZE is loaded in AES_KEYRx key registers. The EN bit can only be set when KEYVALID is set. The key must be written in the key registers in the correct sequence, otherwise the KEIF flag is set and KEYVALID remains cleared. If set, KEIF must be cleared through the AES_ICR register, otherwise KEYVALID cannot be set. See the KEIF flag description for more details. For further information on key loading, refer to Section121.4.15: AES key registers. */
+    using AES_SR_KEYVALID = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 7, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Key not valid (value: 0)
+     *          - B_0x1: Key valid (value: 1)
+     */
+        /** @brief Key not valid */
+    constexpr std::uint32_t AES_SR_KEYVALID_B_0x0 = 0;
+        /** @brief Key valid */
+    constexpr std::uint32_t AES_SR_KEYVALID_B_0x1 = 1;
+
+    /** @brief AES data input register */
+    using AES_DINR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x8, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Data input A four-fold sequential write to this bitfield during the Input phase results in writing a complete 16-bytes block of input data to the AES peripheral. From the first to the fourth write, the corresponding data weights are [127:96], [95:64], [63:32], and [31:0]. Upon each write, the data from the 32-bit input buffer are handled by the data swap block according to the DATATYPE[1:0] bitfield, then written into the AES core 16-bytes input buffer. Reads return zero. */
+    using AES_DINR_DIN = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES data output register */
+    using AES_DOUTR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0xC, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Data output This read-only bitfield fetches a 32-bit output buffer. A four-fold sequential read of this bitfield, upon the computation completion (CCF flag set), virtually reads a complete 16-byte block of output data from the AES peripheral. Before reaching the output buffer, the data produced by the AES core are handled by the data swap block according to the DATATYPE[1:0] bitfield. Data weights from the first to the fourth read operation are: [127:96], [95:64], [63:32], and [31:0]. */
+    using AES_DOUTR_DOUT = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES key register 0 */
+    using AES_KEYR0 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x10, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [31:0] These are bits [31:0] of the write-only bitfield KEY[255:0] AES encryption or decryption key, depending on the MODE[1:0] bitfield of the AES_CR register. Writes to AES_KEYRx registers are ignored when AES is enabled (EN bit set). A special writing sequence is required. In this sequence, any valid write to AES_KEYRx register clears the KEYVALID flag except for the sequence-completing write that sets it. Also refer to the description of the KEYVALID flag in the AES_SR register. */
+    using AES_KEYR0_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES key register 1 */
+    using AES_KEYR1 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x14, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [63:32] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield and for information relative to writing AES_KEYRx registers. */
+    using AES_KEYR1_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES key register 2 */
+    using AES_KEYR2 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x18, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [95:64] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield and for information relative to writing AES_KEYRx registers. */
+    using AES_KEYR2_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES key register 3 */
+    using AES_KEYR3 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x1C, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [127:96] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield and for information relative to writing AES_KEYRx registers. */
+    using AES_KEYR3_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES initialization vector register 0 */
+    using AES_IVR0 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x20, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Initialization vector input, bits [31:0] AES_IVRx registers store the 128-bit initialization vector or the nonce, depending on the chaining mode selected. This value is updated by hardware after each computation round (when applicable). Write to this register is ignored when EN bit is set in AES_SR register */
+    using AES_IVR0_IVI = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES initialization vector register 1 */
+    using AES_IVR1 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x24, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Initialization vector input, bits [63:32] Refer to the AES_IVR0 register for description of the IVI[128:0] bitfield. */
+    using AES_IVR1_IVI = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES initialization vector register 2 */
+    using AES_IVR2 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x28, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Initialization vector input, bits [95:64] Refer to the AES_IVR0 register for description of the IVI[128:0] bitfield. */
+    using AES_IVR2_IVI = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES initialization vector register 3 */
+    using AES_IVR3 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x2C, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Initialization vector input, bits [127:96] Refer to the AES_IVR0 register for description of the IVI[128:0] bitfield. */
+    using AES_IVR3_IVI = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES key register 4 */
+    using AES_KEYR4 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x30, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [159:128] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield and for information relative to writing AES_KEYRx registers. */
+    using AES_KEYR4_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES key register 5 */
+    using AES_KEYR5 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x34, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [191:160] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield and for information relative to writing AES_KEYRx registers. */
+    using AES_KEYR5_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES key register 6 */
+    using AES_KEYR6 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x38, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [223:192] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield and for information relative to writing AES_KEYRx registers. */
+    using AES_KEYR6_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES key register 7 */
+    using AES_KEYR7 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x3C, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Cryptographic key, bits [255:224] Refer to the AES_KEYR0 register for description of the KEY[255:0] bitfield and for information relative to writing AES_KEYRx registers. */
+    using AES_KEYR7_KEY = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES suspend registers */
+    using AES_SUSPR0 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x40, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data AES_SUSPRx registers contain the complete internal register states of the AES when the GCM, GMAC or CCM processing of the current task is suspended to process a higher-priority task. Refer to Section121.4.8: AES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in AES_SR register. AES_SUSPRx registers are not used in other chaining modes than GCM, GMAC or CCM. */
+    using AES_SUSPR0_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES suspend registers */
+    using AES_SUSPR1 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x44, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data AES_SUSPRx registers contain the complete internal register states of the AES when the GCM, GMAC or CCM processing of the current task is suspended to process a higher-priority task. Refer to Section121.4.8: AES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in AES_SR register. AES_SUSPRx registers are not used in other chaining modes than GCM, GMAC or CCM. */
+    using AES_SUSPR1_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES suspend registers */
+    using AES_SUSPR2 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x48, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data AES_SUSPRx registers contain the complete internal register states of the AES when the GCM, GMAC or CCM processing of the current task is suspended to process a higher-priority task. Refer to Section121.4.8: AES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in AES_SR register. AES_SUSPRx registers are not used in other chaining modes than GCM, GMAC or CCM. */
+    using AES_SUSPR2_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES suspend registers */
+    using AES_SUSPR3 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x4C, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data AES_SUSPRx registers contain the complete internal register states of the AES when the GCM, GMAC or CCM processing of the current task is suspended to process a higher-priority task. Refer to Section121.4.8: AES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in AES_SR register. AES_SUSPRx registers are not used in other chaining modes than GCM, GMAC or CCM. */
+    using AES_SUSPR3_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES suspend registers */
+    using AES_SUSPR4 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x50, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data AES_SUSPRx registers contain the complete internal register states of the AES when the GCM, GMAC or CCM processing of the current task is suspended to process a higher-priority task. Refer to Section121.4.8: AES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in AES_SR register. AES_SUSPRx registers are not used in other chaining modes than GCM, GMAC or CCM. */
+    using AES_SUSPR4_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES suspend registers */
+    using AES_SUSPR5 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x54, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data AES_SUSPRx registers contain the complete internal register states of the AES when the GCM, GMAC or CCM processing of the current task is suspended to process a higher-priority task. Refer to Section121.4.8: AES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in AES_SR register. AES_SUSPRx registers are not used in other chaining modes than GCM, GMAC or CCM. */
+    using AES_SUSPR5_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES suspend registers */
+    using AES_SUSPR6 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x58, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data AES_SUSPRx registers contain the complete internal register states of the AES when the GCM, GMAC or CCM processing of the current task is suspended to process a higher-priority task. Refer to Section121.4.8: AES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in AES_SR register. AES_SUSPRx registers are not used in other chaining modes than GCM, GMAC or CCM. */
+    using AES_SUSPR6_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES suspend registers */
+    using AES_SUSPR7 = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x5C, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Suspend data AES_SUSPRx registers contain the complete internal register states of the AES when the GCM, GMAC or CCM processing of the current task is suspended to process a higher-priority task. Refer to Section121.4.8: AES suspend and resume operations for more details. Read to this register returns zero when EN bit is cleared in AES_SR register. AES_SUSPRx registers are not used in other chaining modes than GCM, GMAC or CCM. */
+    using AES_SUSPR7_SUSP = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 32, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief AES interrupt enable register */
+    using AES_IER = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x300, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Computation complete flag interrupt enable This bit enables or disables (masks) the AES interrupt generation when CCF (computation complete flag) is set. */
+    using AES_IER_CCFIE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Disabled (masked) (value: 0)
+     *          - B_0x1: Enabled (not masked) (value: 1)
+     */
+        /** @brief Disabled (masked) */
+    constexpr std::uint32_t AES_IER_CCFIE_B_0x0 = 0;
+        /** @brief Enabled (not masked) */
+    constexpr std::uint32_t AES_IER_CCFIE_B_0x1 = 1;
+
+    /** @brief Read or write error interrupt enable This bit enables or disables (masks) the AES interrupt generation when RWEIF (read and/or write error flag) is set. */
+    using AES_IER_RWEIE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Disabled (masked) (value: 0)
+     *          - B_0x1: Enabled (not masked) (value: 1)
+     */
+        /** @brief Disabled (masked) */
+    constexpr std::uint32_t AES_IER_RWEIE_B_0x0 = 0;
+        /** @brief Enabled (not masked) */
+    constexpr std::uint32_t AES_IER_RWEIE_B_0x1 = 1;
+
+    /** @brief Key error interrupt enable This bit enables or disables (masks) the AES interrupt generation when KEIF (key error flag) is set. */
+    using AES_IER_KEIE = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 2, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Disabled (masked) (value: 0)
+     *          - B_0x1: Enabled (not masked) (value: 1)
+     */
+        /** @brief Disabled (masked) */
+    constexpr std::uint32_t AES_IER_KEIE_B_0x0 = 0;
+        /** @brief Enabled (not masked) */
+    constexpr std::uint32_t AES_IER_KEIE_B_0x1 = 1;
+
+    /** @brief AES interrupt status register */
+    using AES_ISR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x304, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Computation complete flag This flag indicates whether the computation is completed. It is significant only when the DMAOUTEN bit is cleared, and it may stay high when DMAOUTEN is set. The flag setting generates an interrupt if the CCFIE bit of the AES_IER register is set. The flag is cleared by setting the corresponding bit of the AES_ICR register. */
+    using AES_ISR_CCF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: Not completed (value: 0)
+     *          - B_0x1: Completed (value: 1)
+     */
+        /** @brief Not completed */
+    constexpr std::uint32_t AES_ISR_CCF_B_0x0 = 0;
+        /** @brief Completed */
+    constexpr std::uint32_t AES_ISR_CCF_B_0x1 = 1;
+
+    /** @brief Read or write error interrupt flag This read-only bit is set by hardware when a RDERRF or a WRERRF error flag is set in the AES_SR register. The flag setting generates an interrupt if the RWEIE bit of the AES_IER register is set. The flag is cleared by setting the corresponding bit of the AES_ICR register. The flags has no meaning when key derivation mode is selected. See the AES_SR register for details. */
+    using AES_ISR_RWEIF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No read or write error detected (value: 0)
+     *          - B_0x1: Read or write error detected (value: 1)
+     */
+        /** @brief No read or write error detected */
+    constexpr std::uint32_t AES_ISR_RWEIF_B_0x0 = 0;
+        /** @brief Read or write error detected */
+    constexpr std::uint32_t AES_ISR_RWEIF_B_0x1 = 1;
+
+    /** @brief Key error interrupt flag This read-only bit is set by hardware when the key information fails to load into key registers. The flag setting generates an interrupt if the KEIE bit of the AES_IER register is set. The flag is cleared by setting the corresponding bit of the AES_ICR register. KEIF is raised upon any of the following events: AES_KEYRx register write does not respect the correct order. (For KEYSIZE1cleared, AES_KEYR0 then AES_KEYR1 then AES_KEYR2 then AES_KEYR3 register, or reverse. For KEYSIZE set, AES_KEYR0 then AES_KEYR1 then AES_KEYR2 then AES_KEYR3 then AES_KEYR4 then AES_KEYR5 then AES_KEYR6 then AES_KEYR7, or reverse). KEIF must be cleared by the application software, otherwise KEYVALID cannot be set. */
+    using AES_ISR_KEIF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 2, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @details Possible values:
+     *          - B_0x0: No key error detected (value: 0)
+     *          - B_0x1: Key information failed to load into key registers (value: 1)
+     */
+        /** @brief No key error detected */
+    constexpr std::uint32_t AES_ISR_KEIF_B_0x0 = 0;
+        /** @brief Key information failed to load into key registers */
+    constexpr std::uint32_t AES_ISR_KEIF_B_0x1 = 1;
+
+    /** @brief AES interrupt clear register */
+    using AES_ICR = ::EmbeddedPP::LowLevel::Register<std::uint32_t, 0x308, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Computation complete flag clear Setting this bit clears the CCF status bit of the AES_ISR register. */
+    using AES_ICR_CCF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 0, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Read or write error interrupt flag clear Setting this bit clears the RWEIF status bit of the AES_ISR register, and clears both RDERRF and WRERRF flags in the AES_SR register. */
+    using AES_ICR_RWEIF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 1, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+    /** @brief Key error interrupt flag clear Setting this bit clears the KEIF status bit of the AES_ISR register. */
+    using AES_ICR_KEIF = ::EmbeddedPP::LowLevel::BitField<std::uint32_t, 2, 1, ::EmbeddedPP::LowLevel::Accessibility::ReadWrite>;
+}
+
+#endif

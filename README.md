@@ -1,4 +1,7 @@
 # Embedded++
+
+English | [中文](README_zh.md)
+
 Embedded++ is a modern C++ abstraction layer for embedded systems.
 
 ## Features

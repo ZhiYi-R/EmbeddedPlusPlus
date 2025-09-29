@@ -96,7 +96,7 @@ def extract_enumerated_values(field: SVDField) -> List[dict]:
                 if isinstance(item, SVDEnumeratedValue) and item.name is not None:
                     result.append({
                         'name': item.name,
-                        'description': SanitizeDescription(item.description),
+                        'description': SanitizeDescription(item.description), # type: ignore
                         'value': item.value
                     })
         else:
@@ -104,7 +104,7 @@ def extract_enumerated_values(field: SVDField) -> List[dict]:
             if isinstance(ev_group, SVDEnumeratedValue):
                 result.append({
                     'name': ev_group.name,
-                    'description': SanitizeDescription(ev_group.description),
+                    'description': SanitizeDescription(ev_group.description), # type: ignore
                     'value': ev_group.value
                 })
     return result
@@ -117,7 +117,7 @@ def GenerateFieldDefinition(field: SVDField, register_name: str, register_cpp_ty
 
     field_name = SanitizeName(field.name)
     bitfield_name = f"{register_name}_{field_name}"
-    comment = GenerateDoxygenComment(SanitizeDescription(field.description) or f"{field_name} field", 4)
+    comment = GenerateDoxygenComment(SanitizeDescription(field.description) or f"{field_name} field", 4) # type: ignore
 
     start_bit = field.bit_offset if field.bit_offset is not None else 0
     bit_width = field.bit_width if field.bit_width is not None else 1
@@ -128,7 +128,7 @@ def GenerateFieldDefinition(field: SVDField, register_name: str, register_cpp_ty
         "read-write": "::EmbeddedPP::LowLevel::Accessibility::ReadWrite",
         "read-writeOnce": "::EmbeddedPP::LowLevel::Accessibility::ReadWrite",
     }
-    access = access_map.get(field.access, "::EmbeddedPP::LowLevel::Accessibility::ReadWrite")
+    access = access_map.get(field.access, "::EmbeddedPP::LowLevel::Accessibility::ReadWrite") #type: ignore
 
     # 提取枚举值
     enum_values = extract_enumerated_values(field)
@@ -163,7 +163,7 @@ def GenerateRegisterDefinition(register: SVDRegister, peripheral: SVDPeripheral,
         return ""
 
     register_name = SanitizeName(register.name)
-    comment = GenerateDoxygenComment(SanitizeDescription(register.description) or f"{register_name} register", 4)
+    comment = GenerateDoxygenComment(SanitizeDescription(register.description) or f"{register_name} register", 4)# type: ignore
 
     address = register.address_offset if register.address_offset is not None else 0
     bit_width = get_register_bit_width(register, peripheral)
@@ -175,7 +175,7 @@ def GenerateRegisterDefinition(register: SVDRegister, peripheral: SVDPeripheral,
         "read-write": "::EmbeddedPP::LowLevel::Accessibility::ReadWrite",
         "read-writeOnce": "::EmbeddedPP::LowLevel::Accessibility::ReadWrite",
     }
-    access = access_map.get(register.access, "::EmbeddedPP::LowLevel::Accessibility::ReadWrite")
+    access = access_map.get(register.access, "::EmbeddedPP::LowLevel::Accessibility::ReadWrite") #type: ignore
 
     result = f"{comment}    using {register_name} = ::EmbeddedPP::LowLevel::Register<{reg_cpp_type}, 0x{address:X}, {access}>;\n"
 
@@ -194,7 +194,7 @@ def GeneratePeripheralDefinition(peripheral: SVDPeripheral, device_name: str, ar
         return ""
 
     peripheral_name = SanitizeName(peripheral.name)
-    comment = GenerateDoxygenComment(SanitizeDescription(peripheral.description) or f"{peripheral_name} peripheral", 0)
+    comment = GenerateDoxygenComment(SanitizeDescription(peripheral.description) or f"{peripheral_name} peripheral", 0) # type: ignore
 
     includes = "#include <cstdint>\n"
     includes += "#include \"Core/Common.hpp\"\n"
@@ -215,7 +215,7 @@ def GeneratePeripheralDefinition(peripheral: SVDPeripheral, device_name: str, ar
     return includes + result
 
 
-def GenerateDeviceHeader(device: SVDDevice, output_dir: str, arch: Architecture, device_name: str = None) -> None:
+def GenerateDeviceHeader(device: SVDDevice, output_dir: str, arch: Architecture, device_name: str = None) -> None: # type: ignore
     if device_name is None:
         if device.name is None:
             logging.error("[Device Generator] Device has no name in SVD file")

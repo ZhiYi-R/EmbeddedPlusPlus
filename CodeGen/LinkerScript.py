@@ -33,7 +33,7 @@ def GenerateLinkerScript(args, TemplatePath: os.PathLike) -> str:
 def main():
     args = ParseArgmuents()
     TemplatePath = os.path.join(os.path.dirname(__file__), 'Resources', 'LinkerScript.ld')
-    result = GenerateLinkerScript(args, TemplatePath)
+    result = GenerateLinkerScript(args, TemplatePath) #type: ignore
     with open(args.Output_File, 'w') as f:
         f.write(result)
     print(f'Linker Script Generated: {args.Output_File}')

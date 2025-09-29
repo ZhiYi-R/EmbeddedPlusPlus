@@ -257,7 +257,7 @@ def GenerateDeviceHeader(device: SVDDevice, output_dir: str, arch: Architecture,
     logging.info(f"Code generation completed. Files generated in: {device_output_dir}")
 
 
-def process_svd_files(svd_files: list, output_dir: str, arch: str, device_name: str = None):
+def process_svd_files(svd_files: list, output_dir: str, arch: str, device_name: str = None): # type: ignore
     for svd_file in svd_files:
         if not os.path.exists(svd_file):
             logging.error(f"SVD file not found: {svd_file}")
@@ -278,7 +278,7 @@ def process_svd_files(svd_files: list, output_dir: str, arch: str, device_name: 
             else:
                 actual_device_name = device_name
 
-            GenerateDeviceHeader(device, output_dir, arch, actual_device_name)
+            GenerateDeviceHeader(device, output_dir, arch, actual_device_name) #type: ignore
         except Exception as e:
             logging.error(f"Error processing SVD file {svd_file}: {str(e)}", exc_info=True)
 

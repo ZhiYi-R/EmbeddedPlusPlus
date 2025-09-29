@@ -78,6 +78,7 @@ SECTIONS {{
     /** @brief data sections (initialized variables) */
     .data: {{
         . = ALIGN(4);
+        _DataStart = .;
         *(.data)           /* .data sections */
         *(.data*)          /* .data* sections */
         *(.RamFunc)        /* .RamFunc sections */

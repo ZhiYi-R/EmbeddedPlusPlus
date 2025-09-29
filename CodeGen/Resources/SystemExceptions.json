@@ -1,0 +1,72 @@
+{
+    "CortexM0" : [
+        {"Name": "Reset", "Number": 1},
+        {"Name": "NMI", "Number": 2},
+        {"Name": "HardFault", "Number": 3},
+        {"Name": "SVCall", "Number": 11},
+        {"Name": "PendSV", "Number": 14},
+        {"Name": "SysTick", "Number": 15}
+    ],
+    "CortexM0+" : [
+        {"Name": "Reset", "Number": 1},
+        {"Name": "NMI", "Number": 2},
+        {"Name": "HardFault", "Number": 3},
+        {"Name": "SVCall", "Number": 11},
+        {"Name": "PendSV", "Number": 14},
+        {"Name": "SysTick", "Number": 15}
+    ],
+    "CortexM3" : [
+        {"Name": "Reset", "Number": 1},
+        {"Name": "NMI", "Number": 2},
+        {"Name": "HardFault", "Number": 3},
+        {"Name": "MemManage", "Number": 4},
+        {"Name": "BusFault", "Number": 5},
+        {"Name": "UsageFault", "Number": 6},
+        {"Name": "SVCall", "Number": 11},
+        {"Name": "PendSV", "Number": 14},
+        {"Name": "SysTick", "Number": 15}
+    ],
+    "CortexM4" : [
+        {"Name": "Reset", "Number": 1},
+        {"Name": "NMI", "Number": 2},
+        {"Name": "HardFault", "Number": 3},
+        {"Name": "MemManage", "Number": 4},
+        {"Name": "BusFault", "Number": 5},
+        {"Name": "UsageFault", "Number": 6},
+        {"Name": "SVCall", "Number": 11},
+        {"Name": "PendSV", "Number": 14},
+        {"Name": "SysTick", "Number": 15}
+    ],
+    "CortexM7" : [
+        {"Name": "Reset", "Number": 1},
+        {"Name": "NMI", "Number": 2},
+        {"Name": "HardFault", "Number": 3},
+        {"Name": "MemManage", "Number": 4},
+        {"Name": "BusFault", "Number": 5},
+        {"Name": "UsageFault", "Number": 6},
+        {"Name": "SVCall", "Number": 11},
+        {"Name": "PendSV", "Number": 14},
+        {"Name": "SysTick", "Number": 15}
+    ],
+    "Cortex-M23": [
+        {"Name": "Reset", "Number": 1},
+        {"Name": "NMI", "Number": 2},
+        {"Name": "HardFault", "Number": 3},
+        {"Name": "SVCall", "Number": 11},
+        {"Name": "PendSV", "Number": 14},
+        {"Name": "SysTick", "Number": 15}
+    ],
+    "Cortex-M33": [
+        {"Name": "Reset", "Number": 1},
+        {"Name": "NMI", "Number": 2},
+        {"Name": "HardFault", "Number": 3},
+        {"Name": "MemManage", "Number": 4},
+        {"Name": "BusFault", "Number": 5},
+        {"Name": "UsageFault", "Number": 6},
+        {"Name": "SecureFault", "Number": 7},
+        {"Name": "SVCall", "Number": 11},
+        {"Name": "DebugMonitor", "Number": 12},
+        {"Name": "PendSV", "Number": 14},
+        {"Name": "SysTick", "Number": 15}
+    ]
+}

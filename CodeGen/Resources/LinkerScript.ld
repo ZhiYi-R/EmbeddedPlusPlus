@@ -1,7 +1,7 @@
-Entry(ResetHandler)
+ENTRY(ResetHandler)
 MEMORY {{
-    RAM(rwx)    : ORIGIN = {SRAM_Origin}, LENGTH = {SRAM_Length}
-    FLASH(rx)   : ORIGIN = {FLASH_Origin}, LENGTH = {FLASH_Length}
+    RAM(rwx)     : ORIGIN = {SRAM_Origin}, LENGTH = {SRAM_Length}
+    FLASH(rx)    : ORIGIN = {FLASH_Origin}, LENGTH = {FLASH_Length}
 }}
 
 _StackTop = ORIGIN(RAM) + LENGTH(RAM);
@@ -9,14 +9,14 @@ HeapSize = {HeapSize};
 StackSize = {StackSize};
 
 SECTIONS {{
-    /** @brief Interrupt Vector Table */
-    .InterruptVector: {{
+    /* Interrupt Vector Table */
+    .InterruptVector : {{
         . = ALIGN(4);
         KEEP(*(.InterruptVector))
         . = ALIGN(4);
     }} >FLASH
-    /** @brief text sections (code) */
-    .text: {{
+    /* text sections (code) */
+    .text : {{
         . = ALIGN(4);
         *(.text)           /* .text sections (code) */
         *(.text*)          /* .text* sections (code) */
@@ -28,45 +28,45 @@ SECTIONS {{
         . = ALIGN(4);
         _TextEnd = .;      /* define a global symbol at end of text section */
     }} >FLASH
-    /** @brief rodata sections (constants, strings, etc.) */
-    .rodata: {{
+    /* rodata sections (constants, strings, etc.) */
+    .rodata : {{
         . = ALIGN(4);
         *(.rodata)         /* .rodata sections (constants, strings, etc.) */
         *(.rodata*)        /* .rodata* sections (constants, strings, etc.) */
         . = ALIGN(4);
     }} >FLASH
-    /** @brief ARM exception table */
-    .ARM.extab(READONLY) : {{
+    /* ARM exception table */
+    .ARM.extab(READONLY)  : {{
         . = ALIGN(4);
         *(.ARM.extab* .gnu.linkonce.armextab.*)
         . = ALIGN(4);
     }} >FLASH
-    /** @brief ARM exception table index */
-    .ARM(READONLY): {{
+    /* ARM exception table index */
+    .ARM(READONLY) : {{
         . = ALIGN(4);
         __ExceptionTableStart = .;
         *(.ARM.exidx*)
         __ExceptionTableEnd = .;
         . = ALIGN(4);
     }} >FLASH
-    /** @brief preinit_array sections (constructor) */
-    .preinit_array(READONLY): {{
+    /* preinit_array sections (constructor) */
+    .preinit_array(READONLY) : {{
         . = ALIGN(4);
         PROVIDE_HIDDEN(__PreInitArrayStart = .);
         KEEP(*(.preinit_array*))
         . = ALIGN(4);
         PROVIDE_HIDDEN(__PreInitArrayEnd = .);
     }} >FLASH
-    /** @brief init_array sections (constructor) */
-    .init_array(READONLY): {{
+    /* init_array sections (constructor) */
+    .init_array(READONLY) : {{
         . = ALIGN(4);
         PROVIDE_HIDDEN(__InitArrayStart = .);
         KEEP(*(.init_array*))
         . = ALIGN(4);
         PROVIDE_HIDDEN(__InitArrayEnd = .);
     }} >FLASH
-    /** @brief fini_array sections (destructor) */
-    .fini_array(READONLY): {{
+    /* fini_array sections (destructor) */
+    .fini_array(READONLY) : {{
         . = ALIGN(4);
         PROVIDE_HIDDEN(__FiniArrayStart = .);
         KEEP(*(SORT(.fini_array.*)))
@@ -75,8 +75,8 @@ SECTIONS {{
         . = ALIGN(4);
     }} >FLASH
     _DataLoadAddress = LOADADDR(.data);
-    /** @brief data sections (initialized variables) */
-    .data: {{
+    /* data sections (initialized variables) */
+    .data : {{
         . = ALIGN(4);
         _DataStart = .;
         *(.data)           /* .data sections */
@@ -86,9 +86,9 @@ SECTIONS {{
         . = ALIGN(4);
         _DataEnd = .;      /* define a global symbol at end of data section */
     }} >RAM AT> FLASH
-    /** @brief bss sections (uninitialized variables) */
+    /* bss sections (uninitialized variables) */
     . = ALIGN(4);
-    .bss : {{
+    .bss  : {{
         _BssStart = .;
         *(.bss)            /* .bss sections */
         *(.bss*)           /* .bss* sections */
@@ -96,9 +96,9 @@ SECTIONS {{
         . = ALIGN(4);
         _BssEnd = .;       /* define a global symbol at end of bss section */
     }} >RAM
-    /** @brief Heap and Stack */
-    .HeapStack: {{
-        . = ALIGN(8)
+    /* Heap and Stack */
+    .HeapStack : {{
+        . = ALIGN(8);
         PROVIDE(End = .);
         . = . + HeapSize;
         . = . + StackSize;

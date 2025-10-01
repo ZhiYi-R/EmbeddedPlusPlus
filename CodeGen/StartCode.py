@@ -23,8 +23,8 @@ def ArchitectureToExceptionDatabaseKey(Architecture: SupportedArchitectures) -> 
     return Architecture.replace('CM', 'CortexM').replace('P', '+')
 
 def VerifyArguments(args: argparse.Namespace):
-    if not os.path.exists(os.path.join(os.path.dirname(__file__), 'Resources', 'interrupts.hpp')):
-        raise FileNotFoundError('Template \'interrupts.hpp\' not found')
+    if not os.path.exists(os.path.join(os.path.dirname(__file__), 'Resources', 'Interrupts.hpp')):
+        raise FileNotFoundError('Template \'Interrupts.hpp\' not found')
     if not os.path.exists(os.path.join(os.path.dirname(__file__), 'Resources', 'Startup.cpp')):
         raise FileNotFoundError('Template \'Startup.cpp\' not found')
     if not os.path.exists(os.path.join(os.path.dirname(__file__), 'Resources', 'SystemExceptions.json')):
@@ -69,7 +69,7 @@ def GenerateStartCode(args: argparse.Namespace):
     assert isinstance(SystemInterrupts, list)
     # Generate Interrupts Header
     ExistsInterruptNumbers = []
-    with open(os.path.join(os.path.dirname(__file__), 'Resources', 'interrupts.hpp'), 'r', encoding='utf-8') as file:
+    with open(os.path.join(os.path.dirname(__file__), 'Resources', 'Interrupts.hpp'), 'r', encoding='utf-8') as file:
         HeaderTemplate = file.read()
     InterruptDefineLines = ''
     InterruptNumberLines = ''
@@ -94,7 +94,7 @@ def GenerateStartCode(args: argparse.Namespace):
         InterruptDefineLines += f'extern "C" void {Interrupt.name}_IRQHandler(void) noexcept;\n'
         ExistsInterruptNumbers.append(Interrupt.value)
     Header = HeaderTemplate.format(interrupt_defines=InterruptDefineLines, interrupt_numbers=InterruptNumberLines)
-    with open(os.path.join(args.Output_Directory, 'interrupts.hpp'), 'w', encoding='utf-8') as file:
+    with open(os.path.join(args.Output_Directory, 'Interrupts.hpp'), 'w', encoding='utf-8') as file:
         file.write(Header)
     # Generate Startup Code
     with open(os.path.join(os.path.dirname(__file__), 'Resources', 'Startup.cpp'), 'r', encoding='utf-8') as file:

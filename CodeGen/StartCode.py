@@ -102,7 +102,7 @@ def GenerateStartCode(args: argparse.Namespace):
     AliasLines = '\n'
     InterruptVectorLines = '\nextern "C" [[gnu::section(".InterruptVector"), gnu::used]] void(*volatile const isr_vectors[])(void) = {\n'
     InterruptVectorLines = InterruptVectorLines + '    reinterpret_cast<void(*)()>(&_StackTop),\n'
-    for i in range(max(ExistsInterruptNumbers) + 1):
+    for i in range(1, max(ExistsInterruptNumbers) + 1):
         if i not in ExistsInterruptNumbers:
             InterruptVectorLines += '    nullptr,\n'
             continue
